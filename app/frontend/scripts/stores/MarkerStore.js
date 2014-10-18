@@ -4,7 +4,7 @@ var Store = require('../lib/Store');
 var MarkerConstants = require('../constants/MarkerConstants.js');
 var PlayerConstants = require('../constants/PlayerConstants.js');
 
-var markers = JSON.parse(localStorage.markers || "{}");
+var markers = {};
 var currentMarkers = {};
 var _ = require('lodash');
 
@@ -51,6 +51,14 @@ MarkerStore.registerHandler(PlayerConstants.SET_TIMESTAMP, function(payload) {
     currentMarkers[id] = newM;
     this.emitChange();
   }
+});
+
+
+MarkerStore.registerHandler(PlayerConstants.VIDEO_MARKERS_LOADED, function(payload) {
+  var id = payload.videoId;
+  markers[id] = payload.markers;
+
+  this.emitChange();
 });
 
 module.exports = MarkerStore;

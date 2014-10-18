@@ -6,12 +6,20 @@ var MarkerRepository = require('../repositories/MarkerRepository');
 
 function add(videoId, x, y, timestamp) {
   var marker = { x:x, y:y, timestamp: timestamp };
-  var payload = {videoId: videoId, marker: marker};
-  AppDispatcher.handleAction(MarkerConstants.ADD, payload);
 
-  MarkerRepository.create(videoId, marker).then(console.log);
+  MarkerRepository.create(videoId, marker).then(function(marker){
+    var payload = {videoId: videoId, marker: marker};
+    AppDispatcher.handleAction(MarkerConstants.ADD, payload);
+  });
+}
+
+function loadForVideo(videoId) {
+  return MarkerRepository.byVideoId(videoId).then(function(markers) {
+    AppDispatcher.handleAction(MarkerConstants.VIDEO_MARKERS_LOADED, markers);
+  });
 }
 
 module.exports = {
-  add: add
+  add: add,
+  loadForVideo: loadForVideo
 };

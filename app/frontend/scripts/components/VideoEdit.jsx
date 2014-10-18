@@ -30,7 +30,7 @@ var VideoEdit = React.createClass({
 
   componentDidMount: function() {
     var id = this.videoId();
-    VideoActions.loadVideo(id);
+    VideoActions.loadVideoWithMarkers(id);
   },
 
   getStateFromStores: function() {

@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:plataformatec/simple_form.git
+  remote: https://github.com/plataformatec/simple_form
   revision: eb4e01d386a0d3fffcdeabd705cecfe817acdee3
   tag: v3.1.0.rc2
   specs:

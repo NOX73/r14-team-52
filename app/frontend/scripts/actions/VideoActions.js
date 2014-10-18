@@ -3,7 +3,8 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var VideoConstants = require('../constants/VideoConstants');
 var VideoStore = require('../stores/MarkerStore');
-var VideoRepository =require('../repositories/VideoRepository');
+var VideoRepository = require('../repositories/VideoRepository');
+var MarkerActions = require('./MarkerActions');
 
 function tm(fn) {
   setTimeout(fn, 1000);
@@ -16,12 +17,18 @@ function loadList() {
 }
 
 function loadVideo(id) {
-  VideoRepository.findById(id).then(function(video) {
+  return VideoRepository.findById(id).then(function(video) {
     AppDispatcher.handleAction(VideoConstants.VIDEO_LOADED, video);
   });
 }
 
+function loadVideoWithMarkers(id) {
+  loadVideo(id);
+  MarkerActions.loadForVideo(id);
+}
+
 module.exports = {
   loadList: loadList,
-  loadVideo: loadVideo
+  loadVideo: loadVideo,
+  loadVideoWithMarkers: loadVideoWithMarkers
 };

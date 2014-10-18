@@ -9,10 +9,11 @@ var Fluxable = require('../behaviors/Fluxable');
 var VideoActions = require('../actions/VideoActions');
 var VideoItem = require('./VideoItem.jsx');
 var VideoStore = require('../stores/VideoStore');
+var MarkerStore = require('../stores/MarkerStore');
 
 var Video = React.createClass({
   mixins: [Fluxable],
-  watchStores: [VideoStore],
+  watchStores: [VideoStore, MarkerStore],
 
   getStateFromStores: function() {
     return {video: VideoStore.videoById(this.videoId())};
@@ -24,7 +25,7 @@ var Video = React.createClass({
 
   componentDidMount: function() {
     var id = this.videoId();
-    VideoActions.loadVideo(id);
+    VideoActions.loadVideoWithMarkers(id);
   },
 
   renderNoVideo: function() {
@@ -36,9 +37,11 @@ var Video = React.createClass({
 
     if(_.isUndefined(video)){return this.renderNoVideo();}
 
+    var markers = MarkerStore.getMarkers(id);
+
     return (
       <div className="b_points-wrap">
-        <VideoItem video={video}/>
+        <VideoItem video={video} markers={markers}/>
       </div>
     );
   },

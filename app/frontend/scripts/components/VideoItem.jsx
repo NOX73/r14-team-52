@@ -13,13 +13,14 @@ var VideoItem = React.createClass({
 
   render: function() {
     var video = this.props.video;
+    var markers = this.props.markers;
     return (
       <div>
         <div className="b_player-wrap">
           <MarkersLayer video={video}/>
           <Player video={video}/>
         </div>
-        <MarkersList video={video} />
+        <MarkersList video={video} markers={markers}/>
       </div>
     );
   }
