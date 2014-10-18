@@ -9,15 +9,18 @@ var React = require('react/addons');
 var Marker= React.createClass({
 
   render: function() {
-    var cx = { "marker": true, };
+    var cx = {
+      "b_marker": true,
+      "b_marker-active": this.props.acitve,
+      "b_marker-inactive": this.props.inActive
+    };
 
     return (
-      <div className={React.addons.classSet(cx)}>
-        <div className="b_marker" title={this.getName()}></div>
+      <div>
+        <div className={React.addons.classSet(cx)} title={this.getName()}></div>
       </div>
     );
   },
-
 
   getName: function () {
     return this.props.marker.name || "Default Name";

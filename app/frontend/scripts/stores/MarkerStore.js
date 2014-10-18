@@ -20,13 +20,19 @@ var MarkerStore = new Store({
   },
 
   getMarkersByTimestamp: function(videoId, timestamp) {
-    return _.filter(this.getMarkers(videoId), function(marker){
-      return marker.timestamp > timestamp - MARKER_BOUND && marker.timestamp < timestamp + MARKER_BOUND 
-    });
+    return _.filter(this.getMarkers(videoId), this.isActive);
   },
 
   getCurrentMarkers: function(videoId) {
     return currentMarkers[videoId] || [];
+  },
+
+  isActive: function(marker, timestamp) {
+      return marker.timestamp >= timestamp - MARKER_BOUND && marker.timestamp <= timestamp + MARKER_BOUND
+  },
+
+  isInActive: function(marker, timestamp) {
+    return marker.timestamp < timestamp - MARKER_BOUND;
   }
 
 });

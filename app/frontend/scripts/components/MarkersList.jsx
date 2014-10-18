@@ -33,9 +33,15 @@ var MarkersList = React.createClass({
   },
 
   renderMarkers: function () {
+    var id = this.props.video.id;
+    var timestamp = this.state.timestamp;
+
     return _.map(this.state.markers, function(marker) {
+      var active = MarkerStore.isActive(marker, timestamp);
+      var inActive = MarkerStore.isInActive(marker, timestamp);
+
       return (
-        <Marker marker={marker}/>
+        <Marker marker={marker} active={active} inActive={inActive}/>
       );
     }.bind(this));
   }
