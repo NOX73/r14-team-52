@@ -50,18 +50,24 @@ var VideoEdit = React.createClass({
     var markers = MarkerStore.getMarkers(video.id);
 
     return (
-      <div>
-        <div className='b_points-wrap' ref='main'>
-          <Player video={video}/>
-          <MarkupLayer video={video}/>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-9">
+            <div className='b_points-wrap' ref='main'>
+              <Player video={video}/>
+              <MarkupLayer video={video}/>
+            </div>
+
+            <MarkersList video={video} markers={markers}/>
+          </div>
+
+          <div className="col-md-3">
+            <Button onClick={this.fullScreen}>FullScreen</Button>
+            <br/>
+            <br/>
+            {this.renderMarkerForm()}
+          </div>
         </div>
-
-        <MarkersList video={video} markers={markers}/>
-
-        <Button onClick={this.fullScreen}>FullScreen</Button>
-
-        {this.renderMarkerForm()}
-
       </div>
     );
   },

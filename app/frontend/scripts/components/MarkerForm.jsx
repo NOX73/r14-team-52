@@ -13,7 +13,7 @@ var MarkerForm = React.createClass({
   render: function() {
 
     return (
-      <form className="form-horizontal">
+      <form>
         <Input type="text" placeholder="Name"/>
         <Input type="file"/>
       </form>
