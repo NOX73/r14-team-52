@@ -112,13 +112,13 @@ Rails.application.config.sorcery.configure do |config|
   config.facebook.key = ENV['FACEBOOK_KEY']
   config.facebook.secret = ENV['FACEBOOK_SECRET']
   config.facebook.callback_url = "http://points.r14.railsrumble.com/oauth/callback?provider=facebook"
-  config.facebook.user_info_mapping = {:email => "email"}
+  config.facebook.user_info_mapping = {:email => "email", :password => "email"}
   config.facebook.access_permissions = ["email"]
 
   config.github.key = ENV['GITHUB_KEY']
   config.github.secret = ENV['GITHUB_SECRET']
   config.github.callback_url = "http://points.r14.railsrumble.com/oauth/callback?provider=github"
-  config.github.user_info_mapping = {:email => "email"}
+  config.github.user_info_mapping = {:email => "email", :password => "email"}
 
   # config.google.key = ""
   # config.google.secret = ""
