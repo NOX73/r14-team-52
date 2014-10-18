@@ -2,7 +2,7 @@ development: &default
   adapter: postgresql
   database: points_development
   encoding: utf8
-  host: localhost
+  host: <%= ENV['DB_PORT_5432_TCP_ADDR'] || "localhost" %>
   min_messages: warning
   pool: 2
   timeout: 5000
