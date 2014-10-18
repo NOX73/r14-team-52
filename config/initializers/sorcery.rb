@@ -115,11 +115,11 @@ Rails.application.config.sorcery.configure do |config|
   config.facebook.user_info_mapping = {:email => "email"}
   config.facebook.access_permissions = ["email"]
 
-  # config.github.key = ""
-  # config.github.secret = ""
-  # config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
-  # config.github.user_info_mapping = {:email => "name"}
-  #
+  config.github.key = ENV['GITHUB_KEY']
+  config.github.secret = ENV['GITHUB_SECRET']
+  config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
+  config.github.user_info_mapping = {:email => "email"}
+
   # config.google.key = ""
   # config.google.secret = ""
   # config.google.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=google"
