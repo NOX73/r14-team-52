@@ -24,7 +24,8 @@ module.exports = {
   },
 
   _onChange: function() {
-    this.setState(this.getStateFromStores());
+    var state = this.getStateFromStores();
+    setTimeout(this.setState.bind(this, state), 0);
   },
 
 };
