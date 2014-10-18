@@ -1,0 +1,21 @@
+%h1 Listing user_videos
+
+%table
+  %tr
+    %th Name
+    %th Source url
+    %th
+    %th
+    %th
+
+  - @videos.each do |video|
+    %tr
+      %td= video.name
+      %td= video.source_url
+      %td= link_to 'Show', video
+      %td= link_to 'Edit', edit_video_path(video)
+      %td= link_to 'Destroy', video, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Video', new_video_path

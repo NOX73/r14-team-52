@@ -1,0 +1,9 @@
+= simple_form_for(@video, url: url) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :source_url
+
+  .form-actions
+    = f.button :submit
