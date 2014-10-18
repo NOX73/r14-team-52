@@ -31,7 +31,7 @@ var PoinsApp = {
     Config.init({ host: "http://localhost:3000" });
     console.log("Render DEV");
     React.renderComponent((
-      <VideoEdit videoId={1} />
+      <Video videoId={1} />
     ), domElement);
   }
 

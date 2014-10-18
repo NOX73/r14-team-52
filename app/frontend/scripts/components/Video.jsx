@@ -37,7 +37,7 @@ var Video = React.createClass({
 
     if(_.isUndefined(video)){return this.renderNoVideo();}
 
-    var markers = MarkerStore.getMarkers(id);
+    var markers = MarkerStore.getMarkers(video.id);
 
     return (
       <div className="b_points-wrap">
