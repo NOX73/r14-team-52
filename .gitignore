@@ -11,7 +11,6 @@
 /tags
 /tmp/*
 /node_modules
-/app/assets/javascripts/frontend.js
 /app/assets/javascripts/*.svg
 /app/assets/javascripts/*.woff
 /app/assets/javascripts/*.eot
