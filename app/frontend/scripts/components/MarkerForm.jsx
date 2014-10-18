@@ -8,6 +8,7 @@ var React = require('react/addons');
 
 var Input = require('react-bootstrap/Input');
 var MarkerActions = require('../actions/MarkerActions');
+var Button = require('react-bootstrap/Button');
 
 var MarkerForm = React.createClass({
 
@@ -20,9 +21,14 @@ var MarkerForm = React.createClass({
         <Input type="text" placeholder="Link" defaultValue={marker.link} onChange={this.changeLink}/>
         <Input type="textarea" placeholder="Description" defaultValue={marker.description}/>
         <Input type="file"/>
+        <Button bsStyle="danger" onClick={this.onDelete}>Delete</Button>
       </form>
     )
 
+  },
+
+  onDelete: function() {
+    MarkerActions.deleteMarker(this.props.marker);
   },
 
   changeLink: function(e) {

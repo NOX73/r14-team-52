@@ -30,9 +30,16 @@ function markerHover(marker) {
   AppDispatcher.handleAction(MarkerConstants.MARKER_HOVER, marker);
 }
 
+function deleteMarker(marker) {
+  return MarkerRepository.deleteMarker(marker).then(function() {
+    AppDispatcher.handleAction(MarkerConstants.MARKER_DELETED, marker);
+  });
+}
+
 module.exports = {
   add: add,
   loadForVideo: loadForVideo,
   updateMarker: updateMarker,
-  markerHover: markerHover
+  markerHover: markerHover,
+  deleteMarker: deleteMarker
 };

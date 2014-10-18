@@ -43,7 +43,7 @@ var MarkersList = React.createClass({
       var inactive = MarkerHelper.isInActive(marker, timestamp);
 
       return (
-        <Marker key={marker.id} marker={marker} active={active} inactive={inactive} onMouseOver={this.onOverMarker.bind(this, marker)}/>
+        <Marker sorter={marker.start_at} key={marker.id} marker={marker} active={active} inactive={inactive} onMouseOver={this.onOverMarker.bind(this, marker)}/>
       );
     }.bind(this));
   },

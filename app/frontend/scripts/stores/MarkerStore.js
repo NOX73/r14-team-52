@@ -70,11 +70,9 @@ MarkerStore.registerHandler(MarkerConstants.VIDEO_MARKERS_LOADED, function(paylo
 MarkerStore.registerHandler(MarkerConstants.VIDEO_MARKER_UPDATED, function(marker) {
   var id = marker.video_id;
 
-  var oldMarker = _.find(markers[id], {id: marker.id});
-  var newMarkers = _.without(markers[id], oldMarker);
+  markers[id] = _.filter(markers[id], function(m){return m.id != marker.id});
 
-  newMarkers.push(marker);
-  markers[id] = newMarkers;
+  markers[id].push(marker);
 
   this.emitChange();
 });
@@ -85,5 +83,13 @@ MarkerStore.registerHandler(MarkerConstants.MARKER_HOVER, function(marker) {
   this.emitChange();
 });
 
+MarkerStore.registerHandler(MarkerConstants.MARKER_DELETED, function(marker) {
+  var id = marker.video_id;
+  markers[id] = _.filter(markers[id], function(m){return m.id != marker.id});
+
+  if(hoverMarker.id === marker.id) hoverMarker = null;
+
+  this.emitChange();
+});
 
 module.exports = MarkerStore;
