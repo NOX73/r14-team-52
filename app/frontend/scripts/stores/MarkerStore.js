@@ -7,6 +7,7 @@ var PlayerConstants = require('../constants/PlayerConstants.js');
 var markers = {};
 var currentMarkers = {};
 var _ = require('lodash');
+var hoverMarker = null;
 
 var MarkerHelper = require('../helpers/MarkerHelper');
 
@@ -29,6 +30,11 @@ var MarkerStore = new Store({
   getCurrentMarkers: function(videoId) {
     return currentMarkers[videoId] || [];
   },
+
+  hoverMarker: function() {
+    return hoverMarker;
+  }
+
 });
 
 
@@ -60,5 +66,24 @@ MarkerStore.registerHandler(MarkerConstants.VIDEO_MARKERS_LOADED, function(paylo
 
   this.emitChange();
 });
+
+MarkerStore.registerHandler(MarkerConstants.VIDEO_MARKER_UPDATED, function(marker) {
+  var id = marker.video_id;
+
+  var oldMarker = _.find(markers[id], {id: marker.id});
+  var newMarkers = _.without(markers[id], oldMarker);
+
+  newMarkers.push(marker);
+  markers[id] = newMarkers;
+
+  this.emitChange();
+});
+
+MarkerStore.registerHandler(MarkerConstants.MARKER_HOVER, function(marker) {
+  hoverMarker = marker;
+
+  this.emitChange();
+});
+
 
 module.exports = MarkerStore;

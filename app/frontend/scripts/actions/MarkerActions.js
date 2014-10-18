@@ -20,7 +20,19 @@ function loadForVideo(videoId) {
   });
 }
 
+function updateMarker(marker, payload) {
+  return MarkerRepository.updateMarker(marker, payload).then(function(marker) {
+    AppDispatcher.handleAction(MarkerConstants.VIDEO_MARKER_UPDATED, marker);
+  });
+}
+
+function markerHover(marker) {
+  AppDispatcher.handleAction(MarkerConstants.MARKER_HOVER, marker);
+}
+
 module.exports = {
   add: add,
-  loadForVideo: loadForVideo
+  loadForVideo: loadForVideo,
+  updateMarker: updateMarker,
+  markerHover: markerHover
 };

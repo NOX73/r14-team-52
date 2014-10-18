@@ -68,15 +68,14 @@ var VideoEdit = React.createClass({
         </div>
       </div>
     );
+        //<Button onClick={this.fullScreen}>FullScreen</Button>
   },
 
   renderMarkerForm: function() {
-    var id = this.videoId();
+    var marker = MarkerStore.hoverMarker();
+    if(!marker) return null;
 
-    var markers = MarkerStore.getMarkers(id);
-    if(markers.length === 0) return null;
-
-    return (<MarkerForm marker={markers[0]}/>);
+    return (<MarkerForm key={marker.id} marker={marker}/>);
   },
 
   fullScreen: function() {

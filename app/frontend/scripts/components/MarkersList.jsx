@@ -11,6 +11,7 @@ var MarkerHelper = require('../helpers/MarkerHelper');
 var PlayerStore = require('../stores/PlayerStore');
 var Fluxable = require('../behaviors/Fluxable');
 var Marker = require('./Marker');
+var MarkerActions = require('../actions/MarkerActions');
 
 var MarkersList = React.createClass({
   mixins: [Fluxable],
@@ -42,9 +43,13 @@ var MarkersList = React.createClass({
       var inactive = MarkerHelper.isInActive(marker, timestamp);
 
       return (
-        <Marker marker={marker} active={active} inactive={inactive}/>
+        <Marker key={marker.id} marker={marker} active={active} inactive={inactive} onMouseOver={this.onOverMarker.bind(this, marker)}/>
       );
     }.bind(this));
+  },
+
+  onOverMarker: function(marker) {
+    MarkerActions.markerHover(marker);
   }
 
 });
