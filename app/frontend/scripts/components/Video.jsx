@@ -7,10 +7,8 @@
 var Fluxable = require('../behaviors/Fluxable');
 var React = require('react/addons');
 var VideoStore = require('../stores/VideoStore');
-var Link = require('react-router').Link;
-var Player = require('./Player');
-var MarkersLayer = require('./MarkersLayer');
-var MarkersList = require('./MarkersList');
+var VideoActions = require('../actions/VideoActions');
+var VideoItem = require('./VideoItem.jsx');
 
 var VideoPage = React.createClass({
   mixins: [Fluxable],
@@ -24,6 +22,10 @@ var VideoPage = React.createClass({
     return (<div className="b_points-wrap">Loading ... </div>)
   },
 
+  componentDidMount: function() {
+    VideoActions.loadVideo(this.props.videoId);
+  },
+
   render: function() {
     var video = this.state.video;
 
@@ -31,13 +33,7 @@ var VideoPage = React.createClass({
 
     return (
       <div className="b_points-wrap">
-        <div>
-          <div className="b_player-wrap">
-            <MarkersLayer video={video}/>
-            <Player video={video}/>
-          </div>
-          <MarkersList video={video} />
-        </div>
+        <VideoItem video={video}/>
       </div>
     );
   },

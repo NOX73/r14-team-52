@@ -17,6 +17,7 @@ var MarkerForm = React.createClass({
         <Input type="text" placeholder="Name"/>
         <Input type="file"/>
       </form>
+
     )
 
   }

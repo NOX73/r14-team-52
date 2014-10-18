@@ -7,6 +7,7 @@
 var React = require('react/addons');
 var VideoActions = require('../actions/VideoActions');
 var Video = require('./Video.jsx');
+var VideoItem = require('./VideoItem.jsx');
 
 var VideoPage = React.createClass({
 
@@ -29,7 +30,7 @@ var VideoPage = React.createClass({
           <Link to={"/videos/"+video.id+"/edit"}>Edit</Link>
         </div>
 
-        <Video videoId={this.videoId()}/>
+        <VideoItem video={video}/>
       </div>
     );
   },

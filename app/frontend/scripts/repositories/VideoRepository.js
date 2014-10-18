@@ -7,7 +7,7 @@ var Config = require('../services/Config');
 module.exports = {
   findById: function(id) {
     var url = Config.config().host + 'api/videos/' + id + '.json';
-    var req = Request({ url: url }).then(Request.toJSON);
+    var req = Request({ url: url }).then(Request.toJSON).fail(console.log);
 
     return req;
   }

@@ -14,6 +14,8 @@ var Config = require('../services/Config');
 
 var { DefaultRoute, Route, Routes } = require('react-router');
 
+var Video = require('./Video.jsx');
+
 var PoinsApp = {
 
   render: function(domElement) {
@@ -29,13 +31,17 @@ var PoinsApp = {
     Config.init({
       host: "http://localhost:3000/"
     });
+    console.log("Render DEV");
     React.renderComponent((
-      <Routes location="history">
-        <DefaultRoute name="video_list" path="/" handler={MainPage}></DefaultRoute>
-        <Route name="video" path="/videos/:videoId" handler={VideoPage}></Route>
-        <Route name="video_edit" path="/videos/:videoId/edit" handler={VideoMarkup}></Route>
-      </Routes>
+      <Video videoId={1} />
     ), domElement);
+    //React.renderComponent((
+      //<Routes location="history">
+        //<DefaultRoute name="video_list" path="/" handler={MainPage}></DefaultRoute>
+        //<Route name="video" path="/videos/:videoId" handler={VideoPage}></Route>
+        //<Route name="video_edit" path="/videos/:videoId/edit" handler={VideoMarkup}></Route>
+      //</Routes>
+    //), domElement);
   }
 
 }

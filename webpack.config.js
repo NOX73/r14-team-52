@@ -13,7 +13,7 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: 'app/frontend',
-    publicPath: '/app/assets/javascript/frontend'
+    publicPath: '/assets/'
   },
 
   cache: true,
