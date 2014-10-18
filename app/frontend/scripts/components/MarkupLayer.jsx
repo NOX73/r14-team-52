@@ -37,8 +37,8 @@ var MarkupLayer = React.createClass({
   },
 
   onMouseMove: function(event) {
-    var x = event.clientX;
-    var y = event.clientY;
+    var x = event.pageX;
+    var y = event.pageY;
 
     var maxX = this.refs.layer.getDOMNode().offsetWidth;
     var maxY = this.refs.layer.getDOMNode().offsetHeight;
@@ -60,7 +60,7 @@ var MarkupLayer = React.createClass({
   },
 
   handleNewMarker: function(event) {
-    MarkerActions.add(this.props.video.id, event.clientX, event.clientY, this.state.timestamp);
+    MarkerActions.add(this.props.video.id, event.pageX, event.pageY, this.state.timestamp);
   },
 
   renderPoints: function() {
