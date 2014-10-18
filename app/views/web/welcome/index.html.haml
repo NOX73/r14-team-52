@@ -1,13 +1,33 @@
 .welcome
-  .points-wrap
+  .points-row
+    .points-motto
+      %p Point users to the things that really matter
+      %p Points allows you to place markers on your video and lets users interact with them.
+      .landing-button Try it now
 
-    .points-video-container
-      #video-source
-        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "360", :src => "//www.youtube.com/embed/x2QTZmJ8i4Y", :width => "640"}
+    .points-wrap
+      .points-video-container
+        #video-source
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "360", :src => "//www.youtube.com/embed/x2QTZmJ8i4Y", :width => "640"}
 
-    .points-markers-list-wrap
-      .points-markers-list
-        .marker{style: "background-image: url(http://lorempixel.com/32/32)"}
-        .marker.active{style: "background-image: url(http://lorempixel.com/32/32)"}
-        - 10.times do
-          .marker.inactive{style: "background-image: url(http://lorempixel.com/32/32)"}
+      .points-markers-list-wrap
+        .points-markers-list
+          .marker{style: "background-image: url(http://lorempixel.com/32/32)"}
+          .marker.active{style: "background-image: url(http://lorempixel.com/32/32)"}
+          - 10.times do
+            .marker.inactive{style: "background-image: url(http://lorempixel.com/32/32)"}
+
+.container
+  .row
+    .col-md-3.benefit
+      %h4 Advertisement
+      %p Draw the attention of your customers to the goods
+    .col-md-3.benefit
+      %h4 Education
+      %p Add links to additional materials for in-depth study
+    .col-md-3.benefit
+      %h4 Presentations
+      %p Give your potential customers more information about the product
+    .col-md-3.benefit
+      %h4 ?
+      %p We see much more possible uses for this service. Don't hesitate to Contact Us if you want to discuss any!
