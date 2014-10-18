@@ -11,21 +11,24 @@ class Api::Videos::MarkersController < Api::Videos::ApplicationController
   end
 
   def create
-    @marker = resource_video.markers.build
-    @marker.update_attributes(video_marker_params)
+    @marker = resource_video.markers.build(video_marker_params)
+    @marker.save
     render json: @marker
   end
 
   def update
     @marker = resource_video.markers.find(params[:id])
-    @marker.update_attributes(video_marker_params)
-    render json: @marker
+    if @marker.update(video_marker_params)
+      render json: @marker
+    else
+      render json: @marker, status: :unprocessable_entity
+    end
   end
 
   def destroy
     @marker = resource_video.markers.find(params[:id])
     @marker.destroy
-    render json: @marker
+    render json: nil, status: :no_content
   end
 
   private
