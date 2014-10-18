@@ -5,7 +5,7 @@ var MarkerConstants = require('../constants/MarkerConstants');
 var MarkerRepository = require('../repositories/MarkerRepository');
 
 function add(videoId, x, y, timestamp) {
-  var marker = { x:x, y:y, timestamp: timestamp };
+  var marker = { x: x, y: y, start_at: timestamp };
 
   MarkerRepository.create(videoId, marker).then(function(marker){
     var payload = {videoId: videoId, marker: marker};
