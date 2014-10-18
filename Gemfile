@@ -37,6 +37,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "factory_girl_sequences"
   gem "rspec-rails"
+  gem "quiet_assets"
 end
 
 group :test do
