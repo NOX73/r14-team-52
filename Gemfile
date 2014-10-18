@@ -23,6 +23,9 @@ gem "twitter-bootstrap-rails"
 gem "sorcery"
 gem "rails-sass-images"
 
+gem "rails-api"
+gem "active_model_serializers"
+
 group :development do
   gem "spring"
 end
@@ -31,6 +34,7 @@ group :development, :test do
   gem "byebug"
   gem "dotenv-rails"
   gem "factory_girl_rails"
+  gem "factory_girl_sequences"
   gem "rspec-rails"
 end
 
@@ -38,6 +42,7 @@ group :test do
   gem "capybara-webkit", ">= 1.2.0"
   gem "database_cleaner"
   gem "webmock"
+  gem "faker"
 end
 
 group :staging, :production do
