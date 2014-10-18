@@ -1,2 +1,13 @@
-%h1 Web::Welcome#index
-%p Find me in app/views/web/welcome/index.html.haml
+.welcome
+  .points-wrap
+
+    .points-video-container
+      #video-source
+        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "360", :src => "//www.youtube.com/embed/x2QTZmJ8i4Y", :width => "640"}
+
+    .points-markers-list-wrap
+      .points-markers-list
+        .marker{style: "background-image: url(http://lorempixel.com/32/32)"}
+        .marker.active{style: "background-image: url(http://lorempixel.com/32/32)"}
+        - 10.times do
+          .marker.inactive{style: "background-image: url(http://lorempixel.com/32/32)"}

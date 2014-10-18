@@ -21,6 +21,7 @@ gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem "sorcery"
+gem "rails-sass-images"
 
 group :development do
   gem "spring"

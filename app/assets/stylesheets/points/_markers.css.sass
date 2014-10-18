@@ -1,0 +1,44 @@
+.welcome
+  background-color: #364052
+  margin-bottom: 100px
+  position: relative
+
+.points-wrap
+  width: 720px
+  padding: 0 0 24px
+  margin: 0 auto
+  position: relative
+  z-index: 1
+
+.points-video-container
+  width: 640px
+  height: 360px
+
+.points-markers-list-wrap
+  width: 390px
+  height: 360px
+  background: inline("markers-list-background.png") 0 0 no-repeat
+  position: absolute
+  left: 640px
+  top: 0
+  z-index: 1
+
+.points-markers-list
+  width: 80px
+  overflow: auto
+  height: 100%
+
+.marker
+  border: 2px solid #a9a9a9
+  width: 32px
+  height: 32px
+  border-radius: 50%
+  margin: 0 auto 12px
+  box-sizing: border-box
+  cursor: pointer
+  &:first-child
+    margin-top: 12px
+  &.active
+    border: 3px solid #5189a0
+  &.inactive
+    opacity: 0.2
