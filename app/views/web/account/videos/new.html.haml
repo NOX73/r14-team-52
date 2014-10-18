@@ -1,5 +1,9 @@
-%h1 New video
+.container
+  %h1 New video
+  %br
+  .row
+    .col-md-6
+      .row
+        = render 'form', url: videos_url(@video)
 
-= render 'form', url: videos_url(@video)
-
-= link_to 'Back', videos_path
+  = link_to 'Back', videos_path

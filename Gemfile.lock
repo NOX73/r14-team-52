@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:plataformatec/simple_form.git
+  revision: eb4e01d386a0d3fffcdeabd705cecfe817acdee3
+  tag: v3.1.0.rc2
+  specs:
+    simple_form (3.1.0.rc2)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -189,9 +198,6 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    simple_form (3.0.2)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
     slop (3.6.0)
     sorcery (0.8.6)
       bcrypt (~> 3.1)
@@ -270,7 +276,7 @@ DEPENDENCIES
   recipient_interceptor
   rspec-rails
   sass-rails (~> 4.0.3)
-  simple_form
+  simple_form!
   sorcery
   spring
   therubyracer

@@ -1,14 +1,19 @@
-%p#notice= notice
+.container
+  %h1 Show video
 
-%p
-  %b Name:
-  = @video.name
-%p
-  %b Source url:
-  = @video.source_url
+  %br
 
-#PointsAppContainer
+  %p#notice= notice
 
-= link_to 'Edit', edit_video_path(@video)
-\|
-= link_to 'Back', videos_path
+  %p
+    %b Name:
+    = @video.name
+  %p
+    %b Source url:
+    = @video.source_url
+
+  #PointsAppContainer
+
+  = link_to 'Edit', edit_video_path(@video)
+  \|
+  = link_to 'Back', videos_path

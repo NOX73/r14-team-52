@@ -13,7 +13,7 @@ gem "rails", "4.1.6"
 gem "recipient_interceptor"
 gem "haml-rails"
 gem "sass-rails", "~> 4.0.3"
-gem "simple_form"
+gem "simple_form", :git => 'git@github.com:plataformatec/simple_form.git', :tag => 'v3.1.0.rc2'
 gem "title"
 gem "uglifier"
 gem "unicorn"
