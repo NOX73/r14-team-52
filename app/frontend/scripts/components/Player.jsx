@@ -21,7 +21,7 @@ var Player = React.createClass({
       var player = new YT.Player(this.playerDivID(), {
         height: '390', width: '640',
         autoplay: 1, fs: 0,
-        videoId: video.videoId
+        videoId: video.source_url
       });
 
       PlayerActions.setPlayer(video.id, player);

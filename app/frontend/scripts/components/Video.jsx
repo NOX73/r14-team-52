@@ -21,7 +21,7 @@ var VideoPage = React.createClass({
   },
 
   renderNoVideo: function() {
-    return (<div>Loading ... </div>)
+    return (<div className="b_points-wrap">Loading ... </div>)
   },
 
   render: function() {
@@ -31,12 +31,6 @@ var VideoPage = React.createClass({
 
     return (
       <div className="b_points-wrap">
-        <div>
-          <div>ID: {video.id}</div>
-          <div>NAME: {video.name}</div>
-          <Link to={"/videos/"+video.id+"/edit"}>Edit</Link>
-        </div>
-
         <div>
           <div className="b_player-wrap">
             <MarkersLayer video={video}/>

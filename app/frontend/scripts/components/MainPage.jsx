@@ -25,4 +25,4 @@ var MainPage = React.createClass({
 
 });
 
-module.exports = VideoPage;
+module.exports = MainPage;

@@ -20,7 +20,18 @@ var VideoPage = React.createClass({
   },
 
   render: function() {
-    return <Video videoId={this.videoId()}/>
+    return (
+      <div className="b_points-wrap">
+
+        <div>
+          <div>ID: {video.id}</div>
+          <div>NAME: {video.name}</div>
+          <Link to={"/videos/"+video.id+"/edit"}>Edit</Link>
+        </div>
+
+        <Video videoId={this.videoId()}/>
+      </div>
+    );
   },
 
 });
