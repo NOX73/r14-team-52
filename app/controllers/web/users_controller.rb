@@ -25,6 +25,7 @@ class Web::UsersController < Web::ApplicationController
     @user = params[:user] ? User.new(user_params) : User.new_guest
 
     if @user.save
+      auto_login(@user)
       redirect_to :videos, notice: 'User was successfully created.'
     else
       render :new
