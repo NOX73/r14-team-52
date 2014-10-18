@@ -9,7 +9,13 @@ var React = require('react/addons');
 var Point = React.createClass({
 
   render: function() {
-    return <div className="b_marker-point" style={this.getStyles()} ></div>;
+    return (
+      <div className="b_marker-point" style={this.getStyles()} >
+        <div className="b_marker-point-circle-small"></div>
+        <div className="b_marker-point-circle-normal"></div>
+        <div className="b_marker-point-circle-big"></div>
+      </div>
+    );
   },
 
   getStyles: function() {
