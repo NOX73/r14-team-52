@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :api do
+    resources :videos, only: [:show]
+  end
+
   scope module: :web do
     root 'welcome#index'
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018074339) do
+ActiveRecord::Schema.define(version: 20141018091618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,22 @@ ActiveRecord::Schema.define(version: 20141018074339) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
+  create_table "video_markers", force: true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.string   "description"
+    t.integer  "type"
+    t.string   "link"
+    t.datetime "start_at"
+    t.integer  "x"
+    t.integer  "y"
+    t.integer  "video_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "video_markers", ["video_id"], name: "index_video_markers_on_video_id", using: :btree
 
   create_table "videos", force: true do |t|
     t.string   "name"

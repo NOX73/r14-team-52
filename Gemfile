@@ -23,6 +23,9 @@ gem "twitter-bootstrap-rails"
 gem "sorcery"
 gem "rails-sass-images"
 
+gem "rails-api"
+gem "active_model_serializers"
+
 group :development do
   gem "spring"
 end
