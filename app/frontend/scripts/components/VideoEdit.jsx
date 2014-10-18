@@ -22,7 +22,7 @@ var screenfull = require('screenfull');
 
 var VideoEdit = React.createClass({
   mixins: [Fluxable],
-  watchStores: [VideoStore],
+  watchStores: [VideoStore, MarkerStore],
 
   videoId: function () {
     return this.props.videoId || parseInt(this.props.params.videoId);
@@ -35,7 +35,7 @@ var VideoEdit = React.createClass({
 
   getStateFromStores: function() {
     var id = this.videoId();
-    return {video: VideoStore.videoById(id)};
+    return { video: VideoStore.videoById(id) };
   },
 
   renderLoading: function() {
@@ -47,13 +47,16 @@ var VideoEdit = React.createClass({
 
     if(_.isUndefined(video)){ return this.renderLoading(); }
 
+    var markers = MarkerStore.getMarkers(video.id);
+
     return (
       <div>
         <div className='b_points-wrap' ref='main'>
           <Player video={video}/>
           <MarkupLayer video={video}/>
         </div>
-        <MarkersList video={video}/>
+
+        <MarkersList video={video} markers={markers}/>
 
         <Button onClick={this.fullScreen}>FullScreen</Button>
 

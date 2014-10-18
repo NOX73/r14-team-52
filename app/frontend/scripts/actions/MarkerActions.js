@@ -15,7 +15,8 @@ function add(videoId, x, y, timestamp) {
 
 function loadForVideo(videoId) {
   return MarkerRepository.byVideoId(videoId).then(function(markers) {
-    AppDispatcher.handleAction(MarkerConstants.VIDEO_MARKERS_LOADED, markers);
+    var payload = {videoId: videoId, markers: markers};
+    AppDispatcher.handleAction(MarkerConstants.VIDEO_MARKERS_LOADED, payload);
   });
 }
 

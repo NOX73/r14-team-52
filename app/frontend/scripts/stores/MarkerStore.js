@@ -54,7 +54,7 @@ MarkerStore.registerHandler(PlayerConstants.SET_TIMESTAMP, function(payload) {
 });
 
 
-MarkerStore.registerHandler(PlayerConstants.VIDEO_MARKERS_LOADED, function(payload) {
+MarkerStore.registerHandler(MarkerConstants.VIDEO_MARKERS_LOADED, function(payload) {
   var id = payload.videoId;
   markers[id] = payload.markers;
 

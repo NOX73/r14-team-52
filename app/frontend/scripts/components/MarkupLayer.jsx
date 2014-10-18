@@ -16,7 +16,7 @@ var Point = require('./Point.jsx');
 
 var MarkupLayer = React.createClass({
   mixins: [Fluxable],
-  watchStores: [MarkerStore],
+  watchStores: [MarkerStore, PlayerStore],
 
   getStateFromStores: function() {
     var id = this.props.video.id;

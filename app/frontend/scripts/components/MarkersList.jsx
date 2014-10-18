@@ -19,7 +19,7 @@ var MarkersList = React.createClass({
   getStateFromStores: function() {
     var id = this.props.video.id;
     var timestamp = PlayerStore.getTimestamp(id);
-    return { markers: this.props.markers, timestamp: timestamp  };
+    return { timestamp: timestamp  };
   },
 
   render: function() {
@@ -35,7 +35,7 @@ var MarkersList = React.createClass({
   renderMarkers: function () {
     var id = this.props.video.id;
     var timestamp = this.state.timestamp;
-    var sorterd = _.sortBy(this.state.markers, 'timestamp');
+    var sorterd = _.sortBy(this.props.markers, 'start_at');
 
     return _.map(sorterd, function(marker) {
       var active = MarkerHelper.isActive(marker, timestamp);
