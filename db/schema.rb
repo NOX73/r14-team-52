@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018135119) do
+ActiveRecord::Schema.define(version: 20141018172038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20141018135119) do
     t.integer  "video_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "start_at"
+    t.float    "start_at"
   end
 
   add_index "video_markers", ["video_id"], name: "index_video_markers_on_video_id", using: :btree
