@@ -6,13 +6,16 @@
 
 var React = require('react/addons');
 //var ReactTransitionGroup = React.addons.TransitionGroup;
-var Button = require('react-bootstrap/Button');
+var Fluxable = require('../behaviors/Fluxable');
 
 var Player = require('./Player');
 var MarkupLayer = require('./MarkupLayer');
 var MarkersList = require('./MarkersList');
+var MarkerForm = require('./MarkerForm');
+var Button = require('react-bootstrap/Button');
+
 var VideoStore = require('../stores/VideoStore');
-var Fluxable = require('../behaviors/Fluxable');
+var MarkerStore = require('../stores/MarkerStore');
 
 var screenfull = require('screenfull');
 
@@ -46,8 +49,20 @@ var VideoMarkup = React.createClass({
         </div>
         <MarkersList video={video}/>
         <Button onClick={this.fullScreen.bind(this)}>FullScreen</Button>
+
+        {this.renderMarkerForm()}
+
       </div>
     );
+  },
+
+  renderMarkerForm: function() {
+    var id = this.videoId();
+
+    var markers = MarkerStore.getMarkers(id);
+    if(markers.length === 0) return nil;
+
+    return (<MarkerForm marker={markers[0]}/>);
   },
 
   fullScreen: function() {
