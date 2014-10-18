@@ -4,7 +4,7 @@ class Web::UserSessionsController < ApplicationController
   end
 
   def create
-    if @user = login(params[:email], params[:password])
+    if @user = login(user_params[:email], user_params[:password])
       redirect_back_or_to(:videos, notice: 'Login successful')
     else
       flash.now[:alert] = 'Login failed'
@@ -17,4 +17,9 @@ class Web::UserSessionsController < ApplicationController
     redirect_to(:root, notice: 'Logged out!')
   end
 
+  private
+
+    def user_params
+      params.require(:user).permit(:email, :password)
+    end
 end

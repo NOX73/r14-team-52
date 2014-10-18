@@ -1,10 +1,6 @@
-= form_tag(user_sessions_path, method: :post) do |f|
-
-  .field
-    = label_tag :email
-    = text_field_tag :email
-  .field
-    = label_tag :password
-    = password_field_tag :password
-  .actions
-    = submit_tag "Login"
+= simple_form_for @user, url: user_sessions_path, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :email
+  = error_span(@user[:email])
+  = f.input :password
+  = error_span(@user[:password])
+  = f.button :submit, :class => 'btn-primary'

@@ -3,16 +3,15 @@ require 'rails_helper'
 RSpec.describe Web::UserSessionsController, :type => :controller do
 
   let(:create_user) {
-    attributes = {email: 'test1@test.com', password: '123', password_confirmation: '123'}
-    User.create! attributes
+    create :user
   }
 
   let(:valid_credentials) {
-    {email: 'test1@test.com', password: '123'}
+    attributes_for :user
   }
 
   let(:invalid_credentials) {
-    {email: 'test1@test.com', password: 'what?'}
+    {email: 'test1@test.com', password: ''}
   }
 
   describe "GET new" do
@@ -27,7 +26,7 @@ RSpec.describe Web::UserSessionsController, :type => :controller do
     describe "with valid credentials" do
       it "redirects to the videos list" do
         create_user
-        post :create, valid_credentials
+        post :create, user: valid_credentials
         expect(response).to redirect_to(videos_url)
       end
     end
@@ -35,7 +34,7 @@ RSpec.describe Web::UserSessionsController, :type => :controller do
     describe "with invalid credentials" do
       it "re-renders the 'new' template" do
         create_user
-        post :create, invalid_credentials
+        post :create, user: invalid_credentials
         expect(response).to render_template("new")
       end
     end
