@@ -20,6 +20,7 @@ gem "unicorn"
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+gem "rails-sass-images"
 
 group :development do
   gem "spring"
