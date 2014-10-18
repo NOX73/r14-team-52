@@ -14,7 +14,7 @@ var VideoList = React.createClass({
   mixins: [Fluxable],
   watchStores: [VideoStore],
 
-  componentDidMount: function() {
+  didMount: function() {
     VideoActions.loadList();
   },
 

@@ -23,7 +23,7 @@ var Video = React.createClass({
     return this.props.videoId || parseInt(this.props.params.videoId);
   },
 
-  componentDidMount: function() {
+  didMount: function() {
     var id = this.videoId();
     VideoActions.loadVideoWithMarkers(id);
   },

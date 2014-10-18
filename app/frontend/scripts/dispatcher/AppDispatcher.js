@@ -9,7 +9,7 @@ var AppDispatcher = copyProperties(new Dispatcher(), {
     if(!name) console.error("Action unknown: ", name);
     try {
       this.dispatch({ actionType: name, params: params || {} });
-    } catch (e){
+    } catch (e) {
       console.log(e, e.stack)
     }
   },

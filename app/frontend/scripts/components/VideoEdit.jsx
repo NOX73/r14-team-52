@@ -28,7 +28,7 @@ var VideoEdit = React.createClass({
     return this.props.videoId || parseInt(this.props.params.videoId);
   },
 
-  componentDidMount: function() {
+  didMount: function() {
     var id = this.videoId();
     VideoActions.loadVideoWithMarkers(id);
   },
@@ -45,7 +45,7 @@ var VideoEdit = React.createClass({
   render: function() {
     var video = this.state.video;
 
-    if(_.isUndefined(video)){return this.renderLoading();}
+    if(_.isUndefined(video)){ return this.renderLoading(); }
 
     return (
       <div>
