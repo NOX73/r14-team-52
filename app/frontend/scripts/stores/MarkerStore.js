@@ -33,7 +33,12 @@ var MarkerStore = new Store({
 
   hoverMarker: function() {
     return hoverMarker;
+  },
+
+  isHover: function(marker) {
+    return hoverMarker ? hoverMarker.id == marker.id : false;
   }
+
 
 });
 

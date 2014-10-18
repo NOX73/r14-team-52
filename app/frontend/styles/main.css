@@ -47,17 +47,24 @@
   border: 3px solid #5189a0;
 }
 
+.b_marker__type-hover {
+  opacity: 1;
+  border: 3px solid #ff0000;
+  -webkit-filter: grayscale(0%);
+}
+
 .b_marker-point {
   margin-left: -15px;
   margin-top: -15px;
   width: 30px;
   height: 30px;
   position: absolute;
-  -webkit-animation-name: marker_point;
-  -webkit-animation-duration: 0.6s;
-  -webkit-animation-fill-mode: both;
-  -webkit-animation-delay: 0.6s;
+  /*-webkit-animation-name: marker_point;*/
+  /*-webkit-animation-duration: 0.6s;*/
+  /*-webkit-animation-fill-mode: both;*/
+  /*-webkit-animation-delay: 0.6s;*/
 }
+
 .b_marker-point-circle-normal {
   position: absolute;
   border: 2px solid #6cc5e8;
@@ -67,9 +74,9 @@
   opacity: 1;
   left: 12px;
   top: 12px;
-  -webkit-animation-name: normal_circle;
-  -webkit-animation-duration: 0.6s;
-  -webkit-animation-fill-mode: both;
+  /*-webkit-animation-name: normal_circle;*/
+  /*-webkit-animation-duration: 0.6s;*/
+  /*-webkit-animation-fill-mode: both;*/
 }
 .b_marker-point-circle-small {
   content: '';

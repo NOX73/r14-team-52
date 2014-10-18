@@ -6,17 +6,19 @@
 
 var React = require('react/addons');
 var MarkerActions = require('../actions/MarkerActions');
+var MarkupActions =require('../actions/MarkupActions');
 
 var Fluxable = require('../behaviors/Fluxable');
 
 var PlayerStore = require('../stores/PlayerStore');
 var MarkerStore = require('../stores/MarkerStore');
+var MarkupStore = require('../stores/MarkupStore');
 
 var Point = require('./Point.jsx');
 
 var MarkupLayer = React.createClass({
   mixins: [Fluxable],
-  watchStores: [MarkerStore, PlayerStore],
+  watchStores: [MarkerStore, PlayerStore, MarkupStore],
 
   getStateFromStores: function() {
     var id = this.props.video.id;
@@ -27,10 +29,34 @@ var MarkupLayer = React.createClass({
 
   render: function() {
     return (
-      <div className="markup-layer" onClick={this.handleNewMarker}>
+      <div ref="layer" className="markup-layer" onClick={this.handleNewMarker} onMouseMove={this.onMouseMove} onMouseLeave={this.onMouseLeave}>
         {this.renderPoints()}
+        {this.renderNewPoints()}
       </div>
     )
+  },
+
+  onMouseMove: function(event) {
+    var x = event.clientX;
+    var y = event.clientY;
+
+    var maxX = this.refs.layer.getDOMNode().offsetWidth;
+    var maxY = this.refs.layer.getDOMNode().offsetHeight;
+
+    if(maxX > x && maxY > y) {
+      MarkupActions.updateNewMarker({ x: x, y: y });
+    }else {
+      MarkupActions.destroyNewMarker();
+    }
+  },
+
+  onMouseLeave: function() {
+    MarkupActions.destroyNewMarker();
+  },
+
+  renderNewPoints: function() {
+    var marker = MarkupStore.newMarker();
+    return marker ? <Point marker={marker} /> : null
   },
 
   handleNewMarker: function(event) {

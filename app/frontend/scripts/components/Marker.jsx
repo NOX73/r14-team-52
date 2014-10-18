@@ -12,7 +12,8 @@ var Marker= React.createClass({
     var cx = {
       "b_marker": true,
       "b_marker__type-active": this.props.active,
-      "b_marker__type-inactive": this.props.inactive
+      "b_marker__type-inactive": this.props.inactive,
+      "b_marker__type-hover": this.props.hover
     };
 
     return (

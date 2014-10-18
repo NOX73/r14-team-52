@@ -12,6 +12,7 @@ var PlayerStore = require('../stores/PlayerStore');
 var Fluxable = require('../behaviors/Fluxable');
 var Marker = require('./Marker');
 var MarkerActions = require('../actions/MarkerActions');
+var MarkerStore = require('../stores/MarkerStore');
 
 var MarkersList = React.createClass({
   mixins: [Fluxable],
@@ -41,9 +42,10 @@ var MarkersList = React.createClass({
     return _.map(sorterd, function(marker) {
       var active = MarkerHelper.isActive(marker, timestamp);
       var inactive = MarkerHelper.isInActive(marker, timestamp);
+      var hover = MarkerStore.isHover(marker);
 
       return (
-        <Marker sorter={marker.start_at} key={marker.id} marker={marker} active={active} inactive={inactive} onMouseOver={this.onOverMarker.bind(this, marker)}/>
+        <Marker sorter={marker.start_at} key={marker.id} marker={marker} hover={hover} active={active} inactive={inactive} onMouseOver={this.onOverMarker.bind(this, marker)}/>
       );
     }.bind(this));
   },
