@@ -5,7 +5,5 @@
 
   .form-group
     .col-sm-9.col-md-offset-3
-      = link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook)
-      = link_to 'Login with Github', auth_at_provider_path(:provider => :github)
-
-  = link_to 'Back', user_sessions_path
+      %p= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook)
+      %p= link_to 'Login with Github', auth_at_provider_path(:provider => :github)

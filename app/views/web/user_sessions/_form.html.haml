@@ -3,4 +3,6 @@
   = error_span(@user[:email])
   = f.input :password
   = error_span(@user[:password])
-  = f.button :submit, :class => 'btn-primary'
+  .form-group
+    .col-sm-9.col-md-offset-3
+      = f.button :submit, :class => 'btn-primary'

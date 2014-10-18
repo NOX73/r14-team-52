@@ -2,9 +2,7 @@
   %h1 Editing video
   %br
   .row
-    .col-md-6
-      .row
-        = render 'form', url: video_url(@video)
+    = render 'form', url: video_url(@video)
 
   = link_to 'Show', @video
   \|
