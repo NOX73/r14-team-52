@@ -4,3 +4,37 @@
     .footer-content
       = link_to root_path, class: "footer-logo-link" do
         = image_tag("logo-footer.png", size: "78x26", alt: "Points")
+
+      .footer-nav
+        %ul.footer-nav-list
+          %li
+            =link_to "About", "#"
+            %ul.footer-nav-sublist
+              %li
+                =link_to "About Us", "#"
+              %li
+                =link_to "Blog", "#"
+              %li
+                =link_to "Team", "#"
+              %li
+                =link_to "Career", "#"
+              %li
+                =link_to "Contact", "#"
+          %li
+            =link_to "Work", "#"
+            %ul.footer-nav-sublist
+              %li
+                =link_to "Our portfolio", "#"
+              %li
+                =link_to "Latest works", "#"
+              %li
+                =link_to "Brands", "#"
+          %li
+            =link_to "Stuff", "#"
+            %ul.footer-nav-sublist
+              %li
+                =link_to "Privacy", "#"
+              %li
+                =link_to "Terms", "#"
+              %li
+                =link_to "Advertise", "#"
