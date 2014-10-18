@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   namespace :api do
-    resources :videos, only: [:show]
+    resources :videos, only: [:show] do
+      scope module: :videos do
+        resources :markers
+      end
+    end
   end
 
   scope module: :web do

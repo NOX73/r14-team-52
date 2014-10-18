@@ -3,4 +3,6 @@ class Video < ActiveRecord::Base
 
   validates :name, presence: true
   validates :source_url, presence: true
+
+  has_many :markers
 end

@@ -1,15 +1,20 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :video_marker, :class => 'Video::Marker' do
-    name "MyString"
-    image "MyString"
-    description "MyString"
-    type 1
-    link "MyString"
-    start_at "2014-10-18 02:16:22"
-    x 1
-    y 1
-    video nil
+    name
+    description
+    type_of_marker 0
+    link { Faker::Internet.url('wikipedia.org') }
+    start_at { generate(:timestamp) }
+    x { generate(:integer) }
+    y { generate(:integer) }
+    video
+
+    factory :link do
+      type_of_marker 0
+    end
+
+    factory :info do
+      type_of_marker 1
+    end
   end
 end

@@ -4,7 +4,7 @@ class CreateVideoMarkers < ActiveRecord::Migration
       t.string :name
       t.string :image
       t.string :description
-      t.integer :type
+      t.integer :type_of_marker
       t.string :link
       t.timestamp :start_at
       t.integer :x
