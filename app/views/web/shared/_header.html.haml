@@ -6,6 +6,7 @@
     .nav.pull-right
       %ul
         - if current_user
+          %li= link_to "Videos", videos_path
           %li= link_to "Sign out", :logout, method: :post
         - else
           %li= link_to "Sign in", :login
