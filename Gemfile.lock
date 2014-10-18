@@ -141,6 +141,9 @@ GEM
     pg (0.17.1)
     rack (1.5.2)
     rack-cors (0.2.9)
+    rack-google-analytics (1.2.0)
+      actionpack
+      activesupport
     rack-test (0.6.2)
       rack (>= 1.0)
     rack-timeout (0.0.4)
@@ -270,6 +273,7 @@ DEPENDENCIES
   normalize-rails (~> 3.0.0)
   pg
   rack-cors
+  rack-google-analytics
   rack-timeout
   rails (= 4.1.6)
   rails-api

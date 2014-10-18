@@ -47,6 +47,7 @@ group :test do
 end
 
 group :staging, :production do
-  gem 'rails_12factor'
+  gem "rails_12factor"
   gem "newrelic_rpm", ">= 3.7.3"
+  gem "rack-google-analytics"
 end

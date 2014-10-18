@@ -54,5 +54,8 @@ module Points
       end
     end
 
+    if Rails.env.production?
+      config.middleware.use Rack::GoogleAnalytics, :tracker => 'UA-55882831-1'
+    end
   end
 end
