@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   end
 
   has_many :authentications, :dependent => :destroy
-  # accepts_nested_attributes_for :authentications
+  accepts_nested_attributes_for :authentications
 
   validates :password, length: { minimum: 3 }
   validates :password, confirmation: true
