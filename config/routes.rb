@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
-
   scope module: :web do
     root 'welcome#index'
+
+    resources :user_sessions, only: [:new, :create, :destroy]
+    resources :users
+
+    get 'login' => 'user_sessions#new', :as => :login
+    post 'logout' => 'user_sessions#destroy', :as => :logout
   end
 
 end
