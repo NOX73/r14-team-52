@@ -2,3 +2,7 @@
 .page-header
   %h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize
 = render :partial => "form"
+
+= link_to "RailsRumble judge? Click on me", users_path, method: :post
+= link_to 'Sign up with Facebook', auth_at_provider_path(:provider => :facebook)
+= link_to 'Sign up with Github', auth_at_provider_path(:provider => :github)

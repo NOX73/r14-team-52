@@ -5,9 +5,8 @@
 
     .nav.pull-right
       %ul
-        %li
-          =link_to "Login", "#"
-        %li
-          =link_to "Logout", "#"
-        %li
-          =link_to "Register", "#"
+        - if current_user
+          %li= link_to "Sign out", :logout, method: :post
+        - else
+          %li= link_to "Sign in", :login
+          %li= link_to "Sign up", new_user_path

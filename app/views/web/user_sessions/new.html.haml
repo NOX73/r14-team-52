@@ -2,4 +2,7 @@
 
 = render 'form'
 
+= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook)
+= link_to 'Login with Github', auth_at_provider_path(:provider => :github)
+
 = link_to 'Back', user_sessions_path
