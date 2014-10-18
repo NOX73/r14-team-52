@@ -6,4 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(email: 'test@test.com', password: '123', password_confirmation: '123')
+admin = User.create(email: 'admin@points.in', password: ENV['ADMIN_PASSWORD'], password_confirmation: ENV['ADMIN_PASSWORD'])
+
+demo_video = Video.create(name: 'Points demo', source_url: 'RdkDuLveS1M', user: admin)
