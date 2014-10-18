@@ -7,6 +7,7 @@
 var _ = require('lodash');
 var React = require('react/addons');
 
+var MarkerHelper = require('../helpers/MarkerHelper');
 var MarkerStore = require('../stores/MarkerStore');
 var PlayerStore = require('../stores/PlayerStore');
 var Fluxable = require('../behaviors/Fluxable');
@@ -35,13 +36,14 @@ var MarkersList = React.createClass({
   renderMarkers: function () {
     var id = this.props.video.id;
     var timestamp = this.state.timestamp;
+    var sorterd = _.sortBy(this.state.markers, 'timestamp');
 
-    return _.map(this.state.markers, function(marker) {
-      var active = MarkerStore.isActive(marker, timestamp);
-      var inActive = MarkerStore.isInActive(marker, timestamp);
+    return _.map(sorterd, function(marker) {
+      var active = MarkerHelper.isActive(marker, timestamp);
+      var inactive = MarkerHelper.isInActive(marker, timestamp);
 
       return (
-        <Marker marker={marker} active={active} inActive={inActive}/>
+        <Marker marker={marker} active={active} inactive={inactive}/>
       );
     }.bind(this));
   }

@@ -7,7 +7,8 @@ var PlayerConstants = require('../constants/PlayerConstants.js');
 var markers = JSON.parse(localStorage.markers || "{}");
 var currentMarkers = {};
 var _ = require('lodash');
-var MARKER_BOUND = 0.2
+
+var MarkerHelper = require('../helpers/MarkerHelper');
 
 var MarkerStore = new Store({
 
@@ -20,21 +21,14 @@ var MarkerStore = new Store({
   },
 
   getMarkersByTimestamp: function(videoId, timestamp) {
-    return _.filter(this.getMarkers(videoId), this.isActive);
+    return _.filter(this.getMarkers(videoId), function (marker) {
+      return MarkerHelper.isActive(marker, timestamp);
+    });
   },
 
   getCurrentMarkers: function(videoId) {
     return currentMarkers[videoId] || [];
   },
-
-  isActive: function(marker, timestamp) {
-      return marker.timestamp >= timestamp - MARKER_BOUND && marker.timestamp <= timestamp + MARKER_BOUND
-  },
-
-  isInActive: function(marker, timestamp) {
-    return marker.timestamp < timestamp - MARKER_BOUND;
-  }
-
 });
 
 
