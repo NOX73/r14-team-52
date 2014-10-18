@@ -1,4 +1,4 @@
-class User::Video < ActiveRecord::Base
+class Video < ActiveRecord::Base
   belongs_to :user
 
   validates :name, presence: true

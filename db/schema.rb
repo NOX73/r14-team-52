@@ -24,16 +24,6 @@ ActiveRecord::Schema.define(version: 20141018074339) do
     t.datetime "updated_at"
   end
 
-  create_table "user_videos", force: true do |t|
-    t.string   "name"
-    t.string   "source_url"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_videos", ["user_id"], name: "index_user_videos_on_user_id", using: :btree
-
   create_table "users", force: true do |t|
     t.string   "email",            null: false
     t.string   "crypted_password", null: false
@@ -43,5 +33,15 @@ ActiveRecord::Schema.define(version: 20141018074339) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
+  create_table "videos", force: true do |t|
+    t.string   "name"
+    t.string   "source_url"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "videos", ["user_id"], name: "index_videos_on_user_id", using: :btree
 
 end
