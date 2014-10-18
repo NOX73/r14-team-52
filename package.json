@@ -11,6 +11,8 @@
   "mainOutput": "main",
   "dependencies": {
     "lodash": "^2.4.1",
+    "q": "^1.0.1",
+    "qajax": "^0.2.4",
     "react": "~0.11.2",
     "react-bootstrap": "^0.12.0",
     "react-router": "^0.7.0",

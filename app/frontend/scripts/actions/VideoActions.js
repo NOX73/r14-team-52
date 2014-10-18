@@ -3,6 +3,7 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var VideoConstants = require('../constants/VideoConstants');
 var VideoStore = require('../stores/MarkerStore');
+var VideoRepository =require('../repositories/VideoRepository');
 
 function tm(fn) {
   setTimeout(fn, 1000);
@@ -15,9 +16,7 @@ function loadList() {
 }
 
 function loadVideo(id) {
-  var video = { id: id, name: "ID:"+id }
-
-  tm(function() {
+  VideoRepository.findById(id).then(function(video) {
     AppDispatcher.handleAction(VideoConstants.VIDEO_LOADED, video);
   });
 }
