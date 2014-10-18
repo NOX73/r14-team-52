@@ -1,0 +1,72 @@
+/* Stiziles */
+
+html, body {
+  background: #222222;
+}
+
+/* main */
+.main {
+  background: #222222;
+  color: #fff;
+  position: relative;
+  z-index: 0;
+  float: left;
+}
+
+.markup-layer {
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 90%;
+  background-color: rgba(0,255,0, 0.5);
+  -webkit-user-select: none;
+}
+
+.player-container {
+  position: relative;
+  z-index: 10;
+}
+
+.marker-list {
+  float: left;
+  width: 300px;
+  color: white;
+}
+
+.marker-point {
+  position: absolute;
+  background-color: red;
+  z-index: 30;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+}
+
+.marker {
+  opacity: 1;
+  transition: opacity 500ms ease-out;
+}
+
+.marker-opacity-0 {
+  opacity: 0;
+}
+
+.marker-opacity-1 {
+  opacity: 0.2;
+}
+
+.marker-opacity-2 {
+  opacity: 0.4;
+}
+.marker-opacity-3 {
+  opacity: 0.6;
+}
+.marker-opacity-4 {
+  opacity: 0.8;
+}
+.marker-opacity-5 {
+
+  opacity: 1;
+}
