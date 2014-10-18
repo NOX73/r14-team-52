@@ -18,6 +18,10 @@
 
   %body
 
+    %header
+      .points-row
+        = link_to root_path, class: "header-logo-link" do
+          = image_tag("logo.png", size: "230x72", alt: "Points")
     = yield
 
   %footer
