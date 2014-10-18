@@ -24,27 +24,18 @@ var MarkersList = React.createClass({
 
   render: function() {
     return (
-      <div className="b_markers-list">
-        {this.renderMarkers()}
+      <div className="b_markers-list-wrap">
+        <div className="b_markers-list">
+          {this.renderMarkers()}
+        </div>
       </div>
     );
   },
 
   renderMarkers: function () {
     return _.map(this.state.markers, function(marker) {
-      var opacity;
-
-      switch(true) {
-        case Math.abs(marker.timestamp - this.state.timestamp) > 10: opacity = 0; break;
-        case Math.abs(marker.timestamp - this.state.timestamp) > 8: opacity = 1; break;
-        case Math.abs(marker.timestamp - this.state.timestamp) > 6: opacity = 2; break;
-        case Math.abs(marker.timestamp - this.state.timestamp) > 4: opacity = 3; break;
-        case Math.abs(marker.timestamp - this.state.timestamp) > 2: opacity = 4; break;
-        case Math.abs(marker.timestamp - this.state.timestamp) > 1: opacity = 5; break;
-      }
-
       return (
-        <Marker marker={marker} opacityNum={opacity}/>
+        <Marker marker={marker}/>
       );
     }.bind(this));
   }
