@@ -28,7 +28,7 @@ RSpec.describe Web::UserSessionsController, :type => :controller do
       it "redirects to the videos list" do
         create_user
         post :create, valid_credentials
-        expect(response).to redirect_to(users_url)
+        expect(response).to redirect_to(videos_url)
       end
     end
 

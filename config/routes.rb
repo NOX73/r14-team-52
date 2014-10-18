@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'oauths/oauth'
+
+  get 'oauths/callback'
+
   namespace :api do
     resources :videos, only: [:show] do
       scope module: :videos do
@@ -14,12 +18,18 @@ Rails.application.routes.draw do
     resources :user_sessions, only: [:new, :create, :destroy]
     resources :users
 
-    get 'login' => 'user_sessions#new', :as => :login
-    post 'logout' => 'user_sessions#destroy', :as => :logout
-
     scope module: :account do
       resources :videos
     end
+
+    # internal auth
+    get 'login' => 'user_sessions#new', :as => :login
+    post 'logout' => 'user_sessions#destroy', :as => :logout
+
+    # external auth
+    post "oauth/callback" => "oauths#callback"
+    get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
+    get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
   end
 
 end

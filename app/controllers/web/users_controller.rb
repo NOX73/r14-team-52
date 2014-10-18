@@ -22,10 +22,10 @@ class Web::UsersController < Web::ApplicationController
 
   # POST /users
   def create
-    @user = User.new(user_params)
+    @user = params[:user] ? User.new(user_params) : User.new_guest
 
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to :videos, notice: 'User was successfully created.'
     else
       render :new
     end
