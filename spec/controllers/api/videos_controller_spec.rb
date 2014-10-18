@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::VideosController, :type => :controller do
 
   let(:valid_attributes) {
-    {name: 'Test', source_url: 'https://www.youtube.com/watch?v=n_yHZ_vKjno' }
+    {name: 'Test', youtube_video_id: 'v=n_yHZ_vKjno' }
   }
 
   describe "GET show" do

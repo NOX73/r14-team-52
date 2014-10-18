@@ -52,6 +52,6 @@ class Web::Account::VideosController < Web::Account::ApplicationController
   private
 
     def video_params
-      params.require(:video).permit(:name, :source_url)
+      params.require(:video).permit(:name, :youtube_video_id)
     end
 end
