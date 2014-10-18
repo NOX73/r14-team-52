@@ -2,3 +2,12 @@
   .points-row
     = link_to root_path, class: "header-logo-link" do
       = image_tag("logo.png", size: "230x72", alt: "Points")
+
+    .nav.pull-right
+      %ul
+        %li
+          =link_to "Login", "#"
+        %li
+          =link_to "Logout", "#"
+        %li
+          =link_to "Register", "#"
