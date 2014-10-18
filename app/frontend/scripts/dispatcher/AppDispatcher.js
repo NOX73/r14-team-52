@@ -6,10 +6,12 @@ var copyProperties = require('react/lib/copyProperties');
 var AppDispatcher = copyProperties(new Dispatcher(), {
 
   handleAction: function(name, params) {
-    this.dispatch({
-      actionType: name,
-      params: params || {}
-    });
+    if(!name) console.error("Action unknown: ", name);
+    try {
+      this.dispatch({ actionType: name, params: params || {} });
+    } catch (e){
+      console.log(e, e.stack)
+    }
   },
 
 }, Dispatcher);

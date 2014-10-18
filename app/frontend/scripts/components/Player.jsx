@@ -27,7 +27,7 @@ var Player = React.createClass({
       PlayerActions.setPlayer(video.id, player);
 
       this.timer = setInterval(function(){
-        if(player.getCurrentTime) 
+        if(player.getCurrentTime)
           PlayerActions.setTimestamp(video.id, player.getCurrentTime());
       }.bind(this), 100);
 
