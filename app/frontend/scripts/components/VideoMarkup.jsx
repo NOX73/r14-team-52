@@ -40,7 +40,7 @@ var VideoMarkup = React.createClass({
 
     return (
       <div>
-        <div className='main' ref='main'>
+        <div className='b_points-wrap' ref='main'>
           <Player video={video}/>
           <MarkupLayer video={video}/>
         </div>

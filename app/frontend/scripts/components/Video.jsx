@@ -20,7 +20,7 @@ var Video = React.createClass({
   videoId: function () {
     return parseInt(this.props.params.videoId);
   },
-  
+
   getStateFromStores: function() {
     var id = this.videoId();
     return {video: VideoStore.videoById(id)};
@@ -41,7 +41,7 @@ var Video = React.createClass({
     if(_.isUndefined(video)){return this.renderNoVideo();}
 
     return (
-      <div className="main">
+      <div className="b_points-wrap">
         <div>
           <div>ID: {video.id}</div>
           <div>NAME: {video.name}</div>
@@ -49,7 +49,7 @@ var Video = React.createClass({
         </div>
 
         <div>
-          <div>
+          <div className="b_player-wrap">
             <MarkersLayer video={video}/>
             <Player video={video}/>
           </div>

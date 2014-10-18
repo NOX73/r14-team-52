@@ -1,16 +1,19 @@
-/* Stiziles */
-
-html, body {
-  background: #222222;
-}
-
 /* main */
-.main {
-  background: #222222;
-  color: #fff;
+.b_points-wrap {
   position: relative;
   z-index: 0;
   float: left;
+}
+
+.b_player-wrap {
+  position: relative;
+  z-index: 10;
+  float: left;
+}
+
+.b_markers-list {
+  float: left;
+  width: 80px;
 }
 
 .markup-layer {
@@ -22,17 +25,6 @@ html, body {
   height: 90%;
   background-color: rgba(0,255,0, 0.5);
   -webkit-user-select: none;
-}
-
-.player-container {
-  position: relative;
-  z-index: 10;
-}
-
-.marker-list {
-  float: left;
-  width: 300px;
-  color: white;
 }
 
 .marker-point {

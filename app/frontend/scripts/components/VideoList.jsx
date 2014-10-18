@@ -24,7 +24,7 @@ var VideoList = React.createClass({
 
   render: function() {
     return (
-      <div className="main">
+      <div className="b_points-wrap">
         {this.renderVideos()}
       </div>
     );

@@ -24,7 +24,7 @@ var MarkersList = React.createClass({
 
   render: function() {
     return (
-      <div className="marker-list">
+      <div className="b_markers-list">
         {this.renderMarkers()}
       </div>
     );
