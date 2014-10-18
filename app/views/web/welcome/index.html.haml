@@ -1,23 +1,13 @@
 .welcome
   .points-row
-    .points-motto
-      %p Point users to the things that really matter
-      %p Points allows you to place markers on your video and lets users interact with them.
-      .landing-button Try it now
+    .points-wrap
+      .points-motto
+        %p Point users to the things that really matter
+        %p Points allows you to place markers on your video and lets users interact with them.
+        .landing-button Try it now
 
-    #PointsAppContainer
-    -#.points-wrap
       .points-video-container
-        #video-source
-          #PointsAppContainer
-          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "360", :src => "//www.youtube.com/embed/x2QTZmJ8i4Y", :width => "640"}
-
-      .points-markers-list-wrap
-        .points-markers-list
-          .marker{style: "background-image: url(http://lorempixel.com/32/32)"}
-          .marker.active{style: "background-image: url(http://lorempixel.com/32/32)"}
-          - 10.times do
-            .marker.inactive{style: "background-image: url(http://lorempixel.com/32/32)"}
+        #PointsAppContainer
 
 .benefits
   .container
