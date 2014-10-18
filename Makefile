@@ -1,5 +1,7 @@
 serve:
 	docker exec -t -i points grunt serve
+build:
+	docker exec -t -i points grunt build
 rails:
 	docker exec -t -i points_ruby rails s
 

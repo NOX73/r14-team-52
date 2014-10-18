@@ -12,7 +12,7 @@ var Item = React.createClass({
     var video = this.props.video;
     return (
       <div>
-        <Link to={"/video/"+ video.id}>
+        <Link to={"/videos/"+ video.id}>
           {video.name || "noName"}
         </Link>
       </div>

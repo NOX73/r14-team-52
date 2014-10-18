@@ -21,7 +21,7 @@ module.exports = {
   devtool: false,
   entry: [
       'webpack/hot/only-dev-server',
-      './app/frontend/scripts/components/<%= pkg.mainInput %>.jsx'
+      './app/frontend/scripts/components/<%= pkg.mainInput %>.js'
   ],
 
   stats: {

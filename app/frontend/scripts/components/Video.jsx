@@ -4,35 +4,24 @@
 
 'use strict';
 
-var React = require('react/addons');
-var VideoActions = require('../actions/VideoActions');
-var VideoStore = require('../stores/VideoStore');
 var Fluxable = require('../behaviors/Fluxable');
+var React = require('react/addons');
+var VideoStore = require('../stores/VideoStore');
 var Link = require('react-router').Link;
 var Player = require('./Player');
 var MarkersLayer = require('./MarkersLayer');
 var MarkersList = require('./MarkersList');
 
-var Video = React.createClass({
+var VideoPage = React.createClass({
   mixins: [Fluxable],
   watchStores: [VideoStore],
 
-  videoId: function () {
-    return parseInt(this.props.params.videoId);
-  },
-
   getStateFromStores: function() {
-    var id = this.videoId();
-    return {video: VideoStore.videoById(id)};
-  },
-
-  componentDidMount: function() {
-    var id = this.videoId();
-    VideoActions.loadVideo(id);
+    return {video: VideoStore.videoById(this.props.videoId)};
   },
 
   renderNoVideo: function() {
-    return (<div>NO VIDEO</div>)
+    return (<div>Loading ... </div>)
   },
 
   render: function() {
@@ -45,7 +34,7 @@ var Video = React.createClass({
         <div>
           <div>ID: {video.id}</div>
           <div>NAME: {video.name}</div>
-          <Link to={"/video/"+video.id+"/edit"}>Edit</Link>
+          <Link to={"/videos/"+video.id+"/edit"}>Edit</Link>
         </div>
 
         <div>
@@ -61,4 +50,4 @@ var Video = React.createClass({
 
 });
 
-module.exports = Video;
+module.exports = VideoPage;

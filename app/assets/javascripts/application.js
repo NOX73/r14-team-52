@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+//= require_self
+
+jQuery(function() {
+  var element = document.getElementById('PointsAppContainer');
+  (window !== window.top ? window.top : window).PointsApp.render(element);
+});
+
+

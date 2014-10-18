@@ -24,6 +24,14 @@ VideoStore.registerHandler(VideoConstants.LIST_LOADED, function(value) {
 
 
 VideoStore.registerHandler(VideoConstants.VIDEO_LOADED, function(value) {
+  var video = _.find(videos, {id: value.id});
+
+  if (video) {
+    videos = _.without(videos, video);
+  }
+
+  videos.push(value);
+
   this.emitChange();
 });
 
