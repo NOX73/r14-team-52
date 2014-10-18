@@ -6,9 +6,8 @@
 
 var React = require('react');
 
-var VideoList = require('./VideoList.jsx');
-var VideoPage = require('./VideoPage.jsx');
-var VideoMarkup = require('./VideoMarkup.jsx');
+var Video = require('./Video.jsx');
+var VideoEdit = require('./VideoEdit.jsx');
 var MainPage = require('./MainPage.jsx');
 var Config = require('../services/Config');
 
@@ -22,26 +21,18 @@ var PoinsApp = {
     React.renderComponent((
       <Routes location="history">
         <DefaultRoute name="video_list" path="/" handler={MainPage}></DefaultRoute>
-        <Route name="video" path="/videos/:videoId" handler={VideoPage}></Route>
+        <Route name="video" path="/videos/:videoId" handler={Video}></Route>
+        <Route name="video_edit" path="/videos/:videoId/edit" handler={VideoEdit}></Route>
       </Routes>
     ), domElement);
   },
 
   renderDev: function(domElement) {
-    Config.init({
-      host: "http://localhost:3000/"
-    });
+    Config.init({ host: "http://localhost:3000" });
     console.log("Render DEV");
     React.renderComponent((
-      <Video videoId={1} />
+      <VideoEdit videoId={1} />
     ), domElement);
-    //React.renderComponent((
-      //<Routes location="history">
-        //<DefaultRoute name="video_list" path="/" handler={MainPage}></DefaultRoute>
-        //<Route name="video" path="/videos/:videoId" handler={VideoPage}></Route>
-        //<Route name="video_edit" path="/videos/:videoId/edit" handler={VideoMarkup}></Route>
-      //</Routes>
-    //), domElement);
   }
 
 }

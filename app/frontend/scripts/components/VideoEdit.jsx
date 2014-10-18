@@ -16,15 +16,21 @@ var Button = require('react-bootstrap/Button');
 
 var VideoStore = require('../stores/VideoStore');
 var MarkerStore = require('../stores/MarkerStore');
+var VideoActions = require('../actions/VideoActions');
 
 var screenfull = require('screenfull');
 
-var VideoMarkup = React.createClass({
+var VideoEdit = React.createClass({
   mixins: [Fluxable],
   watchStores: [VideoStore],
 
   videoId: function () {
-    return parseInt(this.props.params.videoId);
+    return this.props.videoId || parseInt(this.props.params.videoId);
+  },
+
+  componentDidMount: function() {
+    var id = this.videoId();
+    VideoActions.loadVideo(id);
   },
 
   getStateFromStores: function() {
@@ -48,7 +54,8 @@ var VideoMarkup = React.createClass({
           <MarkupLayer video={video}/>
         </div>
         <MarkersList video={video}/>
-        <Button onClick={this.fullScreen.bind(this)}>FullScreen</Button>
+
+        <Button onClick={this.fullScreen}>FullScreen</Button>
 
         {this.renderMarkerForm()}
 
@@ -60,7 +67,7 @@ var VideoMarkup = React.createClass({
     var id = this.videoId();
 
     var markers = MarkerStore.getMarkers(id);
-    if(markers.length === 0) return nil;
+    if(markers.length === 0) return null;
 
     return (<MarkerForm marker={markers[0]}/>);
   },
@@ -73,4 +80,4 @@ var VideoMarkup = React.createClass({
 
 });
 
-module.exports = VideoMarkup;
+module.exports = VideoEdit;

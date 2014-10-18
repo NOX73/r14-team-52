@@ -4,26 +4,31 @@
 
 'use strict';
 
-var Fluxable = require('../behaviors/Fluxable');
 var React = require('react/addons');
-var VideoStore = require('../stores/VideoStore');
+var Fluxable = require('../behaviors/Fluxable');
 var VideoActions = require('../actions/VideoActions');
 var VideoItem = require('./VideoItem.jsx');
+var VideoStore = require('../stores/VideoStore');
 
-var VideoPage = React.createClass({
+var Video = React.createClass({
   mixins: [Fluxable],
   watchStores: [VideoStore],
 
   getStateFromStores: function() {
-    return {video: VideoStore.videoById(this.props.videoId)};
+    return {video: VideoStore.videoById(this.videoId())};
+  },
+
+  videoId: function () {
+    return this.props.videoId || parseInt(this.props.params.videoId);
+  },
+
+  componentDidMount: function() {
+    var id = this.videoId();
+    VideoActions.loadVideo(id);
   },
 
   renderNoVideo: function() {
     return (<div className="b_points-wrap">Loading ... </div>)
-  },
-
-  componentDidMount: function() {
-    VideoActions.loadVideo(this.props.videoId);
   },
 
   render: function() {
@@ -40,4 +45,4 @@ var VideoPage = React.createClass({
 
 });
 
-module.exports = VideoPage;
+module.exports = Video;
