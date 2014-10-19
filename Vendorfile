@@ -1,0 +1,4 @@
+from 'https://github.com/jamesflorentino/nanoScrollerJS' do
+  file 'vendor/assets/javascripts/jquery.nanoscroller.min.js', '/bin/javascripts/jquery.nanoscroller.min.js'
+  file 'vendor/assets/stylesheets/nanoscroller.css', '/bin/css/nanoscroller.css'
+end

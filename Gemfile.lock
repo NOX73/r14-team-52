@@ -247,6 +247,7 @@ GEM
     validates (1.0.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
+    vendorer (0.1.16)
     webmock (1.19.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -293,4 +294,5 @@ DEPENDENCIES
   uglifier
   unicorn
   validates
+  vendorer
   webmock
