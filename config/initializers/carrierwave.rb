@@ -11,7 +11,9 @@ CarrierWave.configure do |config|
   else
     config.storage = :file
     config.enable_processing = false
-    config.root = "#{Rails.root}/tmp"
+    if Rails.env.test?
+      config.root = "#{Rails.root}/tmp"
+    end
   end
 
   config.cache_dir = "#{Rails.root}/tmp/uploads"                  # To let CarrierWave work on heroku
