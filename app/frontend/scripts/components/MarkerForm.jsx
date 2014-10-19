@@ -8,16 +8,21 @@ var React = require('react/addons');
 
 var Input = require('react-bootstrap/Input');
 var MarkerActions = require('../actions/MarkerActions');
+var MarkerStore = require('../stores/MarkerStore');
 var Button = require('react-bootstrap/Button');
+
+function bsStyle(name) {
+  return MarkerStore.isErrorField(name) ? "error" : ""
+}
 
 var MarkerForm = React.createClass({
 
   render: function() {
-    var marker = this.props.marker
+    var marker = this.props.marker;
 
     return (
       <form className="form-horizontal">
-        <Input type="static" value={"Timestamp: " + marker.start_at + " sec."} />
+        <Input type="number" hasFeedback bsStyle={bsStyle("start_at")} defaultValue={marker.start_at} onChange={this.changeStartAt}/>
         <Input type="text" placeholder="Name" defaultValue={marker.name} onChange={this.changeName}/>
         <Input type="text" placeholder="Link" defaultValue={marker.link} onChange={this.changeLink}/>
         <Input type="textarea" placeholder="Description" defaultValue={marker.description} onChange={this.changeDescription}/>
@@ -54,6 +59,11 @@ var MarkerForm = React.createClass({
   changeName: function(e) {
     var val = e.target.value;
     MarkerActions.updateMarker(this.props.marker, {name: val});
+  },
+
+  changeStartAt: function (e) {
+    var val = e.target.value;
+    MarkerActions.updateMarker(this.props.marker, {start_at: val});
   }
 
 });

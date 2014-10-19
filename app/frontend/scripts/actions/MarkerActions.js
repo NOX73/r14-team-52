@@ -23,6 +23,9 @@ function loadForVideo(videoId) {
 function updateMarker(marker, payload) {
   return MarkerRepository.updateMarker(marker, payload).then(function(marker) {
     AppDispatcher.handleAction(MarkerConstants.VIDEO_MARKER_UPDATED, marker);
+  }).fail(function(e){
+    AppDispatcher.handleAction(MarkerConstants.VIDEO_MARKER_UPDATED_FAILED, payload);
+    return e;
   });
 }
 

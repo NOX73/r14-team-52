@@ -9,6 +9,7 @@ var currentMarkers = {};
 var _ = require('lodash');
 var hoverMarker = null;
 var selectedMarker = null;
+var updateError = null;
 
 function setSelectedMarker(marker) {
   if(marker && selectedMarker && marker.id === selectedMarker.id) return;
@@ -47,8 +48,16 @@ var MarkerStore = new Store({
 
   isHover: function(marker) {
     return hoverMarker ? hoverMarker.id == marker.id : false;
-  }
+  },
 
+  updateError: function() {
+    return updateError;
+  },
+
+  isErrorField: function(name) {
+    if(_.isNull(updateError)) return false;
+    return !_.isUndefined(updateError[name]);
+  }
 
 });
 
@@ -90,7 +99,13 @@ MarkerStore.registerHandler(MarkerConstants.VIDEO_MARKER_UPDATED, function(marke
   markers[id] = _.filter(markers[id], function(m){return m.id != marker.id});
 
   markers[id].push(marker);
+  updateError = null;
 
+  this.emitChange();
+});
+
+MarkerStore.registerHandler(MarkerConstants.VIDEO_MARKER_UPDATED_FAILED, function(payload) {
+  updateError = payload;
   this.emitChange();
 });
 
