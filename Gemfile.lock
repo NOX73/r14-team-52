@@ -143,9 +143,6 @@ GEM
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-cors (0.2.9)
-    rack-google-analytics (1.2.0)
-      actionpack
-      activesupport
     rack-test (0.6.2)
       rack (>= 1.0)
     rack-timeout (0.0.4)
@@ -276,7 +273,6 @@ DEPENDENCIES
   pg
   quiet_assets
   rack-cors
-  rack-google-analytics
   rack-timeout
   rails (= 4.1.6)
   rails-api
