@@ -25,6 +25,10 @@ module.exports = {
     reasons: false
   },
 
+  externals: {
+    "jquery": "jQuery"
+  },
+
   plugins: [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin(),
