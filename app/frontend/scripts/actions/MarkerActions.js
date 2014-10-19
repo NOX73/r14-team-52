@@ -68,7 +68,9 @@ function hideInfo() {
 }
 
 function uploadFile(marker, formData) {
-  MarkerRepository.uploadFile(marker, formData)
+  MarkerRepository.uploadFile(marker, formData).then(function(marker){
+    AppDispatcher.handleAction(MarkerConstants.VIDEO_MARKER_UPDATED, marker);
+  })
 }
 
 module.exports = {
