@@ -97,7 +97,7 @@ RSpec.describe Web::Account::VideosController, :type => :controller do
       it "redirects to the video" do
         video = create :video, user: user
         put :update, {:id => video.to_param, :video => valid_attributes}
-        expect(response).to redirect_to(video_url(video))
+        expect(response).to redirect_to(edit_video_url(video))
       end
     end
 

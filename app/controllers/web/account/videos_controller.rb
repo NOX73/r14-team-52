@@ -37,7 +37,7 @@ class Web::Account::VideosController < Web::Account::ApplicationController
   def update
     @video = current_user.videos.find(params[:id])
     if @video.update(video_params)
-      redirect_to video_url(@video), notice: 'Video was successfully updated.'
+      redirect_to edit_video_url(@video), notice: 'Video was successfully updated.'
     else
       render :edit
     end
