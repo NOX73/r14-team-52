@@ -1,8 +1,24 @@
 .welcome
   position: relative
   overflow: hidden
-  height: 800px
+  height: 663px
   background: asset-url('site-background.jpg') center top no-repeat
+
+@media (min-width: 1921px)
+  .welcome
+    height: 1080px
+@media (min-width: 1920px)
+  .welcome
+    height: 852px
+@media (max-width: 1720px)
+  .welcome
+    height: 764px
+@media (max-width: 1520px)
+  .welcome
+    height: 675px
+@media (max-width: 1500px)
+  .welcome
+    height: 663px
 
 .points-opacity
   background: rgba(0,0,0,0.5)
