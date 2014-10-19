@@ -15,3 +15,4 @@
 /app/assets/javascripts/*.woff
 /app/assets/javascripts/*.eot
 /app/assets/javascripts/*.ttf
+/public/uploads
