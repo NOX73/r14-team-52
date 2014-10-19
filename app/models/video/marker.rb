@@ -6,6 +6,8 @@ class Video::Marker < ActiveRecord::Base
 
   after_initialize :init
 
+  mount_uploader :image, Video::MarkerImageUploader
+
   validates :start_at, presence: true
   validates :x, presence: true
   validates :y, presence: true
