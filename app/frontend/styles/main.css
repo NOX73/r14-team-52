@@ -65,6 +65,10 @@
   cursor: pointer;
   transition: width 300ms ease-out;
   -webkit-transition: width 300ms ease-out;
+  transition: opacity 200ms ease-out;
+  -webkit-transition: opacity 200ms ease-out;
+  transition: border 200ms ease-out;
+  -webkit-transition: border 200ms ease-out;
   background-color: white;
   overflow: hidden;
 }
@@ -90,10 +94,6 @@
 .b_marker:hover .b_marker-icon {
   opacity: 1;
 }
-
-/*.b_marker:first-child {*/
-  /*margin-top: 12px;*/
-/*}*/
 .b_marker__type-inactive {
   opacity: 0.2;
   -webkit-filter: grayscale(100%);
