@@ -4,6 +4,7 @@ class Web::UserSessionsController < ApplicationController
   end
 
   def create
+    @user = User.new
     if @user = login(user_params[:email], user_params[:password])
       redirect_back_or_to(:videos, notice: 'Login successful')
     else
