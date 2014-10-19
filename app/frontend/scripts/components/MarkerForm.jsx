@@ -17,6 +17,7 @@ var MarkerForm = React.createClass({
 
     return (
       <form className="form-horizontal">
+        <Input type="static" value={"Timestamp: " + marker.start_at + " sec."} />
         <Input type="text" placeholder="Name" defaultValue={marker.name} onChange={this.changeName}/>
         <Input type="text" placeholder="Link" defaultValue={marker.link} onChange={this.changeLink}/>
         <Input type="textarea" placeholder="Description" defaultValue={marker.description} onChange={this.changeDescription}/>
