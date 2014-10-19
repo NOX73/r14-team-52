@@ -14,6 +14,7 @@ var Marker = require('./Marker');
 var MarkerActions = require('../actions/MarkerActions');
 var MarkerStore = require('../stores/MarkerStore');
 var {OverlayTrigger, Tooltip} = require('react-bootstrap');
+var $ = require('jquery');
 
 var MarkersList = React.createClass({
   mixins: [Fluxable],
@@ -24,15 +25,46 @@ var MarkersList = React.createClass({
     var timestamp = PlayerStore.getTimestamp(id);
     return { timestamp: timestamp  };
   },
-
+  
   render: function() {
+    this.scroll();
+
     return (
       <div className="b_markers-list-wrap">
-        <div className="b_markers-list">
+        <div className="b_markers-list" ref="scroll" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
           {this.renderMarkers()}
         </div>
       </div>
     );
+  },
+
+  onMouseEnter: function () {
+    this.autoScroll = false;
+  },
+
+  onMouseLeave: function() {
+    this.autoScroll = true;
+  },
+
+  scroll: function() {
+    if(this.refs.scroll && this.autoScroll) {
+      $(this.refs.scroll.getDOMNode()).animate({scrollTop: this.scrollPosition()}, {queue: false});
+    }
+  },
+
+  scrollPosition: function() {
+    if(this.props.markers.length === 0) return 0;
+
+    var timestamp = this.state.timestamp;
+    var sorterd = _.sortBy(this.props.markers, 'start_at');
+
+    var idx = _.findLastIndex(sorterd, function(marker){
+      return !MarkerHelper.isInActive(marker, timestamp);
+    });
+
+    if(idx < 0) return 0;
+
+    return idx * 44
   },
 
   renderMarkers: function () {
@@ -59,7 +91,7 @@ var MarkersList = React.createClass({
         var tooltip = <Tooltip><strong>{marker.name}</strong></Tooltip>; 
 
         return (
-          <OverlayTrigger trigger="hover" placement="bottom" overlay={tooltip}>
+          <OverlayTrigger key={"overlay_" + marker.id} trigger="hover" placement="bottom" overlay={tooltip}>
             <div>{markerElement}</div>
           </OverlayTrigger>
         );

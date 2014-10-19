@@ -16,6 +16,10 @@ module.exports = {
     publicPath: '/assets/'
   },
 
+  externals: {
+    "jquery": "jQuery"
+  },
+
   cache: true,
   debug: true,
   devtool: false,
