@@ -52,8 +52,6 @@ var MarkupLayer = React.createClass({
     var maxX = this.refs.layer.getDOMNode().offsetWidth;
     var maxY = this.refs.layer.getDOMNode().offsetHeight;
 
-    console.log(x, y, maxX, maxY)
-
     if(maxX > x && maxY > y && y > 0 && x > 0) {
       MarkupActions.updateNewMarker({ x: x, y: y });
     }else {
