@@ -10,6 +10,7 @@ var _ = require('lodash');
 var hoverMarker = null;
 var selectedMarker = null;
 var updateError = null;
+var openInfo = false;
 
 function setSelectedMarker(marker) {
   if(marker && selectedMarker && marker.id === selectedMarker.id) return;
@@ -57,6 +58,10 @@ var MarkerStore = new Store({
   isErrorField: function(name) {
     if(_.isNull(updateError)) return false;
     return !_.isUndefined(updateError[name]);
+  },
+
+  openInfo: function () {
+    return openInfo;
   }
 
 });
@@ -113,8 +118,6 @@ MarkerStore.registerHandler(MarkerConstants.MARKER_HOVER, function(marker) {
   if(marker && hoverMarker && marker.id === hoverMarker.id) return;
   hoverMarker = marker;
 
-  //if(selectedMarker && selectedMarker.id != marker) selectedMarker = null;
-
   this.emitChange();
 });
 
@@ -129,16 +132,22 @@ MarkerStore.registerHandler(MarkerConstants.MARKER_DELETED, function(marker) {
 });
 
 MarkerStore.registerHandler(MarkerConstants.MARKER_SELECT, function(marker) {
+  openInfo = true;
   setSelectedMarker(marker)
   this.emitChange();
 });
-
 
 MarkerStore.registerHandler(MarkerConstants.MARKER_UNSELECT, function() {
   if(selectedMarker === null) return;
   selectedMarker = null;
   this.emitChange();
 });
+
+MarkerStore.registerHandler(MarkerConstants.HIDE_INFO, function() {
+  openInfo = false;
+  this.emitChange();
+});
+
 
 
 

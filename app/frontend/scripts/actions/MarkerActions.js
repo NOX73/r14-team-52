@@ -3,6 +3,7 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var MarkerConstants = require('../constants/MarkerConstants');
 var MarkerRepository = require('../repositories/MarkerRepository');
+var PlayerConstants =require('../constants/PlayerConstants');
 
 function add(videoId, x, y, timestamp) {
   var marker = { x: x, y: y, start_at: timestamp };
@@ -41,9 +42,10 @@ function deleteMarker(marker) {
 
 function selectMarker(marker) {
   AppDispatcher.handleAction(MarkerConstants.MARKER_SELECT, marker);
+  AppDispatcher.handleAction(PlayerConstants.PAUSE_PLAYERS);
 }
 
-function hideSelected() {
+function unselectMarker() {
   AppDispatcher.handleAction(MarkerConstants.MARKER_UNSELECT);
 }
 
@@ -51,7 +53,7 @@ function markerClick(marker) {
   switch(marker.type_of_marker) {
     case 1:
       selectMarker(marker);
-      window.open(marker.link,'_blank');
+      window.open(marker.link, '_blank');
       break;
     case 2:
       selectMarker(marker);
@@ -59,7 +61,10 @@ function markerClick(marker) {
     default:
       console.warn("Undefined marker type: ", marker);
   }
+}
 
+function hideInfo() {
+  AppDispatcher.handleAction(MarkerConstants.HIDE_INFO);
 }
 
 module.exports = {
@@ -69,6 +74,7 @@ module.exports = {
   markerHover: markerHover,
   deleteMarker: deleteMarker,
   selectMarker: selectMarker,
-  hideSelected: hideSelected,
-  markerClick: markerClick
+  unselectMarker: unselectMarker,
+  markerClick: markerClick,
+  hideInfo: hideInfo
 };

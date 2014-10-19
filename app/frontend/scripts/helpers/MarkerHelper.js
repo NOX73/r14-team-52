@@ -7,7 +7,7 @@ module.exports = {
   },
 
   isInActive: function(marker, timestamp) {
-    return marker.start_at > timestamp - MARKER_BOUND;
+    return marker.start_at > timestamp;
   }
 
 }

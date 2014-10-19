@@ -10,6 +10,7 @@ var Player = require('./Player');
 var MarkersLayer = require('./MarkersLayer');
 var MarkerInfo = require('./MarkerInfo');
 var MarkerActions = require('../actions/MarkerActions');
+var PlayerActions = require('../actions/PlayerActions');
 
 var VideoItem = React.createClass({
 
@@ -20,7 +21,7 @@ var VideoItem = React.createClass({
       <div>
         <div className="b_player-wrap">
           <MarkersLayer video={video}/>
-          <MarkerInfo />
+          <MarkerInfo onClick={this.onClickInfo} />
           <Player video={video}/>
         </div>
         <MarkersList video={video} markers={markers} onClickMarker={this.onClickMarker}/>
@@ -28,12 +29,14 @@ var VideoItem = React.createClass({
     );
   },
 
+  onClickInfo: function() {
+    MarkerActions.unselectMarker();
+    PlayerActions.playPlayer(this.props.video.id);
+  },
+
   onClickMarker: function(marker) {
     MarkerActions.markerClick(marker);
   }
-
-
-
 });
 
 module.exports = VideoItem;

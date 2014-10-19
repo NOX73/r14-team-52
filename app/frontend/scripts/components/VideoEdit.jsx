@@ -19,6 +19,7 @@ var VideoStore = require('../stores/VideoStore');
 var MarkerStore = require('../stores/MarkerStore');
 var VideoActions = require('../actions/VideoActions');
 var MarkerActions = require('../actions/MarkerActions');
+var PlayerActions = require('../actions/PlayerActions');
 
 var screenfull = require('screenfull');
 
@@ -53,11 +54,11 @@ var VideoEdit = React.createClass({
 
     return (
       <div className="row">
-        <div className="col-md-9">
-          <div className='b_points-wrap' ref='main'>
+        <div className="col-md-9" ref='main'>
+          <div className='b_points-wrap'>
             <Player video={video}/>
             <MarkupLayer video={video}/>
-            <MarkerInfo />
+            <MarkerInfo onClick={this.onClickInfo}/>
           </div>
 
           <MarkersList video={video} markers={markers} onClickMarker={this.onClickMarker}/>
@@ -71,7 +72,6 @@ var VideoEdit = React.createClass({
         </div>
       </div>
     );
-        //<Button onClick={this.fullScreen}>FullScreen</Button>
   },
 
   renderMarkerForm: function() {
@@ -87,8 +87,13 @@ var VideoEdit = React.createClass({
     }
   },
 
+  onClickInfo: function() {
+    MarkerActions.hideInfo();
+  },
+
   onClickMarker: function(marker) {
     MarkerActions.selectMarker(marker);
+    PlayerActions.seekToMarker(marker);
   }
 
 });

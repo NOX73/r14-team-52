@@ -14,7 +14,24 @@ function setTimestamp(videoId, timestamp) {
   AppDispatcher.handleAction(PlayerConstants.SET_TIMESTAMP, payload);
 }
 
+function seekToMarker(marker) {
+  var payload = {videoId: marker.video_id, timestamp: marker.start_at}
+  AppDispatcher.handleAction(PlayerConstants.SEEK_PLAYER_TO, payload);
+}
+
+function pausePlayer(videoId) {
+  AppDispatcher.handleAction(PlayerConstants.PAUSE_PLAYER, videoId);
+}
+
+function playPlayer(videoId) {
+  AppDispatcher.handleAction(PlayerConstants.PLAY_PLAYER, videoId);
+}
+
+
 module.exports = {
   setPlayer: setPlayer,
-  setTimestamp: setTimestamp
+  setTimestamp: setTimestamp,
+  seekToMarker: seekToMarker,
+  pausePlayer: pausePlayer,
+  playPlayer: playPlayer
 };
