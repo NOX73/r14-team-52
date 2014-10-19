@@ -8,6 +8,7 @@ var markers = {};
 var currentMarkers = {};
 var _ = require('lodash');
 var hoverMarker = null;
+var selectedMarker = null;
 
 var MarkerHelper = require('../helpers/MarkerHelper');
 
@@ -33,6 +34,10 @@ var MarkerStore = new Store({
 
   hoverMarker: function() {
     return hoverMarker;
+  },
+
+  selectedMarker: function() {
+    return selectedMarker;
   },
 
   isHover: function(marker) {
@@ -83,7 +88,10 @@ MarkerStore.registerHandler(MarkerConstants.VIDEO_MARKER_UPDATED, function(marke
 });
 
 MarkerStore.registerHandler(MarkerConstants.MARKER_HOVER, function(marker) {
+  if(marker && hoverMarker && marker.id === hoverMarker.id) return;
   hoverMarker = marker;
+
+  if(selectedMarker && selectedMarker.id != marker) selectedMarker = null;
 
   this.emitChange();
 });
@@ -92,9 +100,26 @@ MarkerStore.registerHandler(MarkerConstants.MARKER_DELETED, function(marker) {
   var id = marker.video_id;
   markers[id] = _.filter(markers[id], function(m){return m.id != marker.id});
 
-  if(hoverMarker.id === marker.id) hoverMarker = null;
+  if(hoverMarker && hoverMarker.id === marker.id) hoverMarker = null;
+  if(selectedMarker && selectedMarker.id === marker.id) selectedMarker = null;
 
   this.emitChange();
 });
+
+MarkerStore.registerHandler(MarkerConstants.MARKER_SELECT, function(marker) {
+  if(marker && selectedMarker && marker.id === selectedMarker.id) return;
+  selectedMarker = marker;
+
+  this.emitChange();
+});
+
+
+MarkerStore.registerHandler(MarkerConstants.MARKER_UNSELECT, function() {
+  if(selectedMarker === null) return;
+  selectedMarker = null;
+  this.emitChange();
+});
+
+
 
 module.exports = MarkerStore;

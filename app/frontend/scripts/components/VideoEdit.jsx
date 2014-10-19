@@ -13,6 +13,7 @@ var MarkupLayer = require('./MarkupLayer');
 var MarkersList = require('./MarkersList');
 var MarkerForm = require('./MarkerForm');
 var Button = require('react-bootstrap/Button');
+var MarkerInfo = require('./MarkerInfo');
 
 var VideoStore = require('../stores/VideoStore');
 var MarkerStore = require('../stores/MarkerStore');
@@ -55,6 +56,7 @@ var VideoEdit = React.createClass({
           <div className='b_points-wrap' ref='main'>
             <Player video={video}/>
             <MarkupLayer video={video}/>
+            <MarkerInfo />
           </div>
 
           <MarkersList video={video} markers={markers}/>

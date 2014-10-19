@@ -8,6 +8,7 @@ var React = require('react/addons');
 var MarkersList = require('./MarkersList');
 var Player = require('./Player');
 var MarkersLayer = require('./MarkersLayer');
+var MarkerInfo = require('./MarkerInfo');
 
 var VideoItem = React.createClass({
 
@@ -18,6 +19,7 @@ var VideoItem = React.createClass({
       <div>
         <div className="b_player-wrap">
           <MarkersLayer video={video}/>
+          <MarkerInfo />
           <Player video={video}/>
         </div>
         <MarkersList video={video} markers={markers}/>

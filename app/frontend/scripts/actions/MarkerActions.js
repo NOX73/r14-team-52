@@ -36,10 +36,20 @@ function deleteMarker(marker) {
   });
 }
 
+function selectMarker(marker) {
+  AppDispatcher.handleAction(MarkerConstants.MARKER_SELECT, marker);
+}
+
+function hideSelected() {
+  AppDispatcher.handleAction(MarkerConstants.MARKER_UNSELECT);
+}
+
 module.exports = {
   add: add,
   loadForVideo: loadForVideo,
   updateMarker: updateMarker,
   markerHover: markerHover,
-  deleteMarker: deleteMarker
+  deleteMarker: deleteMarker,
+  selectMarker: selectMarker,
+  hideSelected: hideSelected
 };
