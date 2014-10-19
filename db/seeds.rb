@@ -8,4 +8,4 @@
 
 admin = User.create(email: 'admin@points.in', password: ENV['ADMIN_PASSWORD'], password_confirmation: ENV['ADMIN_PASSWORD'])
 
-demo_video = Video.create(name: 'Points demo', youtube_video_id: 'RdkDuLveS1M', user: admin)
+demo_video = Video.create(name: 'Points demo', source_url: 'http://youtu.be/RdkDuLveS1M', user: admin)

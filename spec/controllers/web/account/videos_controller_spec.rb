@@ -4,7 +4,7 @@ RSpec.describe Web::Account::VideosController, :type => :controller do
 
   let(:user) { create :user }
   let(:valid_attributes) { attributes_for :video }
-  let(:invalid_attributes) { {name: 'Test', youtube_video_id: ''} }
+  let(:invalid_attributes) { {name: 'Test', source_url: 'http://youtu.be/'} }
 
   before do
     login_user(user)
@@ -77,7 +77,7 @@ RSpec.describe Web::Account::VideosController, :type => :controller do
   describe "PUT update" do
     describe "with valid params" do
       let(:new_attributes) {
-        {name: 'Test', youtube_video_id: 'v=n_yHZ_vKjno'}
+        {name: 'Test', source_url: 'http://youtu.be/aSvZEyQT52k'}
       }
 
       it "updates the requested video" do

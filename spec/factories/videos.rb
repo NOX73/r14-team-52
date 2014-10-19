@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :video do
     name { Faker::Name.title }
-    youtube_video_id 'n_yHZ_vKjno'
+    source_url 'http://youtu.be/aSvZEyQT52k'
     user
   end
 end

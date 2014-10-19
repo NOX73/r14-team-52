@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true
   validates :password_confirmation, presence: true
 
-  validates :email, uniqueness: true
+  validates :email, :email => true, uniqueness: true
 
   # remove this feature after RailsRumble
   def self.new_guest

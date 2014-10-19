@@ -22,6 +22,7 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem "sorcery"
 gem "rails-sass-images"
+gem "validates"
 
 gem "rails-api"
 gem "active_model_serializers"
