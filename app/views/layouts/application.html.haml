@@ -27,6 +27,7 @@
     = javascript_include_tag "application"
     - if Rails.env.production?
       = render("web/shared/analytics_init")
+      = render("web/shared/heyswell_init")
     = if Rails.env.test?
       :javascript
         $.fx.off = true;
