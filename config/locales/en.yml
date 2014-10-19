@@ -17,3 +17,16 @@ en:
 
   titles:
     application: <%= app_name.humanize %>
+
+  helpers:
+    submit:
+      user:
+        create: "Sign up"
+
+  web:
+    users:
+      new:
+        title: Register
+    user_sessions:
+      form:
+        submit: Sign in
