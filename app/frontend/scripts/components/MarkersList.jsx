@@ -32,7 +32,7 @@ var MarkersList = React.createClass({
     return (
       <div className="b_markers-list-wrap">
         <div className="b_marker-scroll-disable">
-          <div className="b_markers-list" ref="scroll" onMouseMove={onMouseEnter} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+          <div className="b_markers-list" ref="scroll" onMouseMove={this.onMouseEnter} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
             {this.renderMarkers()}
           </div>
         </div>
