@@ -36,29 +36,62 @@
   background: url('../images/markers-list-background-white.png') 0 0 no-repeat;
 }
 
+.b_marker-scroll-disable {
+  width: 110px;
+  height: 391px;
+  overflow: hidden;
+}
+
 .b_markers-list {
-  width: 80px;
+  width: 150px;
   height: 100%;
   overflow: auto;
   padding-top: 185px;
   padding-bottom: 185px;
 }
 
+.b_marker:hover {
+  width: 64px;
+}
+
 .b_marker {
   border: 2px solid #a9a9a9;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  margin: 0 auto 12px;
+  border-radius: 32px;
+  margin: 0 0 12px 23px;
   box-sizing: border-box;
   cursor: pointer;
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-image: url('http://lorempixel.com/32/32');
+  /*background-repeat: no-repeat;*/
+  /*background-position: 0 0;*/
+  /*background-image: url('http://lorempixel.com/32/32');*/
+  transition: width 300ms ease-out;
+  background-color: white;
+  overflow: hidden;
 }
-.b_marker:first-child {
-  margin-top: 12px;
+
+.b_marker-image {
+  margin: 0px;
+  width: 28px;
+  height: 28px;
+  border-radius: 28px;
+  display: inline-block;
+  margin-right: 8px;
 }
+
+.b_marker-icon {
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+  font-size: 18px;
+}
+
+.b_marker:hover .b_marker-icon {
+  opacity: 1;
+}
+
+/*.b_marker:first-child {*/
+  /*margin-top: 12px;*/
+/*}*/
 .b_marker__type-inactive {
   opacity: 0.2;
   -webkit-filter: grayscale(100%);

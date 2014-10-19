@@ -5,6 +5,7 @@
 'use strict';
 
 var React = require('react/addons');
+var PlayerActions = require('../actions/PlayerActions');
 
 var Marker= React.createClass({
 
@@ -20,9 +21,17 @@ var Marker= React.createClass({
 
     return (
       <div onMouseOver={this.props.onMouseOver} onClick={this.props.onClick}>
-        <div className={React.addons.classSet(cx)}></div>
+        <div className={React.addons.classSet(cx)}>
+          <img className="b_marker-image" src="http://lorempixel.com/28/28"/>
+          <span className="b_marker-icon" title="Jump to marker" onClick={this.playMarker}>▶</span>
+        </div>
       </div>
     );
+  },
+
+  playMarker: function(e) {
+    e.stopPropagation();
+    PlayerActions.seekToMarker(this.props.marker);
   }
 
 });
