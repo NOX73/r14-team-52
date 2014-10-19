@@ -1,8 +1,13 @@
 .welcome
-  background-color: #364052
   position: relative
   overflow: hidden
+  height: 800px
+  background: asset-url('site-background.jpg') center top no-repeat
 
+.points-opacity
+  background: rgba(0,0,0,0.7)
+  margin-top: 160px
+  padding-top: 20px
 .points-wrap
   position: relative
   overflow: hidden
@@ -38,15 +43,8 @@
   position: absolute
   left: 240px
   top: 0
-
-.points-markers-list-wrap
-  width: 390px
-  height: 360px
-  background: inline("markers-list-background.png") 0 0 no-repeat
-  position: absolute
-  left: 640px
-  top: 0
-  z-index: 1
+  .b_markers-list
+    background: inline("markers-list-background.png") 0 0 no-repeat #131313
 
 .points-markers-list
   width: 80px

@@ -1,16 +1,17 @@
 .welcome
-  .points-row
-    .points-wrap
-      .points-motto
-        %p "Point users to the things that really matter"
-        %p Points allows you to place markers on your video and lets users interact with them.
-        - if current_user
-          = link_to "Try it now", videos_path, class: "landing-button"
-        - else
-          = link_to "Try it now", users_path, method: :post, class: "landing-button"
+  .points-opacity
+    .points-row
+      .points-wrap
+        .points-motto
+          %p "Point users to the things that really matter"
+          %p Points allows you to place markers on your video and lets users interact with them.
+          - if current_user
+            = link_to "Try it now", videos_path, class: "landing-button"
+          - else
+            = link_to "Try it now", users_path, method: :post, class: "landing-button"
 
-      .points-video-container
-        #PointsAppContainer
+        .points-video-container
+          #PointsAppContainer
 
 .benefits
   .container
