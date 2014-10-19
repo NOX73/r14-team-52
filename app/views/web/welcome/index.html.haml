@@ -39,8 +39,8 @@
     .row
       %h1 Points created by our users
     .row
-      - 3.times do
+      - @last_videos.each do |video|
         .col-md-4
-          .video-item
-            %img{src: "http://lorempixel.com/300/200", width: "100%"}
-            %h4 Creative video about cuucumbers
+          = link_to video_url(video), class: 'video-item' do
+            %img{src: "http://img.youtube.com/vi/#{video.youtube_video_id}/0.jpg", width: "100%"}
+            %h4= video

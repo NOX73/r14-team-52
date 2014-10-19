@@ -10,6 +10,8 @@ class YoutubeVideoIdValidator < ActiveModel::EachValidator
 end
 
 class Video < ActiveRecord::Base
+  include VideoRepository
+
   belongs_to :user
   has_many :markers
 
@@ -20,6 +22,10 @@ class Video < ActiveRecord::Base
   def source_url=(value)
     write_attribute(:source_url, value)
     self.youtube_video_id = extract_youtube_video_id_from(value)
+  end
+
+  def to_s
+    name
   end
 
   private
