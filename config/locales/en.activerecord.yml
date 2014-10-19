@@ -6,3 +6,12 @@ en:
           attributes:
             email:
               email: does not look like a real email
+        video:
+          attributes:
+            source_url:
+              url: does not look like an url
+
+    attributes:
+      video:
+        source_url: YouTube video url
+

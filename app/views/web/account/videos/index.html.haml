@@ -1,22 +1,18 @@
 .container
-  %h1 Listing videos
+  %h1= t('.title')
 
   %table.table
-    %tr
-      %th Name
-      %th Youtube video ID
-      %th
-      %th
-      %th
-
     - @videos.each do |video|
       %tr
-        %td= video.name
-        %td= video.youtube_video_id
-        %td= link_to 'Show', video
-        %td= link_to 'Edit', edit_video_path(video)
-        %td= link_to 'Destroy', video, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to video, edit_video_url(video)
+        %td
+          .btn-group
+            = link_to 'Edit', edit_video_path(video)
+            |
+            = link_to 'Show', video_path(video)
+            |
+            = link_to 'Destroy', video, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
   %br
 
-  = link_to 'New Video', new_video_path, class: "btn btn-primary"
+  = link_to t('.new_video'), new_video_path, class: "btn btn-primary"

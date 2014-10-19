@@ -1,14 +1,14 @@
 .container
   %h1
     = @video.name
+  %h4
     - if current_user && current_user == @video.user
-      %span.controls
-        = link_to videos_path do
-          %span.glyphicon.glyphicon-arrow-left
-          Back
-        = link_to edit_video_path(@video) do
-          %span.glyphicon.glyphicon-edit
-          Edit
+      = link_to videos_path, class: 'btn btn-default btn-sm'do
+        %span.glyphicon.glyphicon-arrow-left
+        Back
+      = link_to edit_video_path(@video), class: 'btn btn-success btn-sm'do
+        %span.glyphicon.glyphicon-edit
+        Edit
 
   %p#notice= notice
 

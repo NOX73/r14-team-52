@@ -22,6 +22,9 @@ en:
     submit:
       user:
         create: "Sign up"
+      video:
+        create: "Add"
+        update: "Save"
 
   web:
     users:
@@ -30,3 +33,12 @@ en:
     user_sessions:
       form:
         submit: Sign in
+    account:
+      videos:
+        index:
+          title: My videos
+          new_video: Add new video
+        new:
+          title: New video
+        edit:
+          title: Marking up %{name}

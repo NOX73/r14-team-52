@@ -1,7 +1,14 @@
 .container
   .row
     .col-md-12
-      %h1 Editing video
+      %h1
+        = t('.title', name: @video.to_s)
+      %h4
+        = link_to videos_path, class: 'btn btn-default btn-sm' do
+          %span.glyphicon.glyphicon-arrow-left
+          Back
+        = link_to video_path(@video), class: 'btn btn-success btn-sm' do
+          View
   %br
   .row
     = render 'form', url: video_url(@video)
@@ -10,13 +17,5 @@
   %br
 
   #PointsAppContainer
-
-  .row
-    .col-md-12
-      %br
-      %p
-        = link_to 'Show', @video
-        \|
-        = link_to 'Back', videos_path
 
   %br

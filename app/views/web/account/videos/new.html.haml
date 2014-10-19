@@ -1,7 +1,9 @@
 .container
-  %h1 New video
+  %h1
+    = t('.title')
+    = link_to videos_path, class: 'btn btn-default btn-sm' do
+      %i.glyphicon.glyphicon-arrow-left
+      Back
   %br
   .row
     = render 'form', url: videos_url(@video)
-
-  = link_to 'Back', videos_path
