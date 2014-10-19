@@ -63,10 +63,8 @@
   margin: 0 0 12px 23px;
   box-sizing: border-box;
   cursor: pointer;
-  /*background-repeat: no-repeat;*/
-  /*background-position: 0 0;*/
-  /*background-image: url('http://lorempixel.com/32/32');*/
   transition: width 300ms ease-out;
+  -webkit-transition: width 300ms ease-out;
   background-color: white;
   overflow: hidden;
 }
@@ -78,12 +76,15 @@
   border-radius: 28px;
   display: inline-block;
   margin-right: 8px;
+  vertical-align: top;
 }
 
 .b_marker-icon {
   opacity: 0;
   transition: opacity 300ms ease-out;
   font-size: 18px;
+  position: relative;
+  top: 1px;
 }
 
 .b_marker:hover .b_marker-icon {
