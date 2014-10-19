@@ -1,25 +1,17 @@
 .container
-  %h1 Show video
-
-  %br
+  %h1
+    = @video.name
+    %span.controls
+      = link_to videos_path do
+        %span.glyphicon.glyphicon-arrow-left
+        Back
+      = link_to edit_video_path(@video) do
+        %span.glyphicon.glyphicon-edit
+        Edit
 
   %p#notice= notice
-
-  %p
-    %b Name:
-    = @video.name
-  %p
-    %b Video ID:
-    = @video.youtube_video_id
 
   #PointsAppContainer
 
   .clearfix
-  %br
-
-  %p
-    = link_to 'Edit', edit_video_path(@video)
-    \|
-    = link_to 'Back', videos_path
-
   %br
