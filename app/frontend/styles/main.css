@@ -84,35 +84,151 @@
   border: 2px solid #6cc5e8;
   border-radius: 50%;
   opacity: 1;
-  width: 6px;
-  height: 6px;
-  left: 12px;
-  top: 12px;
-  -webkit-animation-name: circle;
-  -webkit-animation-duration: 1.2s;
-  -webkit-animation-fill-mode: both;
+  width: 8px;
+  height: 8px;
+  left: 11px;
+  top: 11px;
+  -webkit-animation-fill-mode: forwards;
   -webkit-animation-timing-function: linear;
-}
-.b_marker-point-circle-small {
-  -webkit-animation-delay: 0;
-}
-.b_marker-point-circle-normal {
-  -webkit-animation-delay: 0.4s;
-}
-.b_marker-point-circle-big {
-  -webkit-animation-delay: 0.8s;
 }
 
 .point-animation-leave {
-  opacity: 1;
-  -webkit-transition: opacity 1.2s ease-in;
+  opacity: 0.99;
+  -webkit-transition: opacity 0.6s linear;
 }
 
 .point-animation-leave.point-animation-leave-active {
-  opacity: 0;
+  opacity: 1;
 }
 
-@-webkit-keyframes circle {
+.point-animation-enter {
+  opacity: 1;
+  -webkit-transition: opacity 0.6s linear;
+}
+
+.point-animation-enter.point-animation-enter-active {
+  opacity: 0.99;
+}
+
+
+.b_marker-point-circle-small {
+  opacity: 0.5;
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+}
+.b_marker-point-circle-normal {
+  opacity: 0.75;
+  left: 5px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.point-animation-enter .b_marker-point-circle {
+  -webkit-animation-duration: 1.2s;
+}
+
+.point-animation-leave .b_marker-point-circle {
+  -webkit-animation-duration: 0.6s;
+}
+
+.point-animation-enter .b_marker-point-circle-small {
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+  left: 11px;
+  top: 11px;
+  -webkit-animation-name: enter-circle-small;
+}
+.point-animation-enter .b_marker-point-circle-normal {
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+  left: 11px;
+  top: 11px;
+  -webkit-animation-name: enter-circle-normal;
+}
+
+.point-animation-leave .b_marker-point-circle-small {
+  -webkit-animation-name: leave-circle-small;
+}
+.point-animation-leave .b_marker-point-circle-normal {
+  -webkit-animation-name: leave-circle-normal;
+}
+.point-animation-leave .b_marker-point-circle-big {
+  -webkit-animation-name: leave-circle-big;
+}
+
+@-webkit-keyframes leave-circle-small {
+  0% {
+    opacity: 0.5;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+  }
+  50% {
+    left: -5px;
+    top: -5px;
+    width: 40px;
+    height: 40px;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes leave-circle-normal {
+  0% {
+    opacity: 0.75;
+    left: 5px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+  }
+  50% {
+    opacity: 0.5;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+  }
+  100% {
+    left: -5px;
+    top: -5px;
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes leave-circle-big {
+  0% {
+    opacity: 1;
+    width: 6px;
+    height: 6px;
+    left: 12px;
+    top: 12px;
+  }
+  50% {
+    opacity: 0.75;
+    left: 5px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+  }
+  100% {
+    opacity: 0;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@-webkit-keyframes enter-circle-small {
   0% {
     opacity: 1;
     width: 6px;
@@ -127,22 +243,29 @@
     width: 20px;
     height: 20px;
   }
-  50% {
+  50%, 100% {
     opacity: 0.5;
     left: 0;
     top: 0;
     width: 30px;
     height: 30px;
   }
-  75% {
-    opacity: 0.25;
-    left: -5px;
-    top: -5px;
-    width: 40px;
-    height: 40px;
+}
+
+@-webkit-keyframes enter-circle-normal {
+  0% {
+    opacity: 1;
+    width: 6px;
+    height: 6px;
+    left: 12px;
+    top: 12px;
   }
-  100% {
-    opacity: 0;
+  50%, 100% {
+    opacity: 0.75;
+    left: 5px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
   }
 }
 

@@ -32,10 +32,12 @@ var MarkupLayer = React.createClass({
   render: function() {
     return (
       <div ref="layer" className="markup-layer" onClick={this.handleNewMarker} onMouseMove={this.onMouseMove} onMouseLeave={this.onMouseLeave}>
-        <ReactCSSTransitionGroup transitionEnter={false} transitionName="point-animation">
+        <ReactCSSTransitionGroup transitionName="point-animation">
           {this.renderPoints()}
         </ReactCSSTransitionGroup>
-        {this.renderNewPoints()}
+        <ReactCSSTransitionGroup transitionName="point-animation">
+          {this.renderNewPoints()}
+        </ReactCSSTransitionGroup>
       </div>
     )
   },
@@ -63,7 +65,7 @@ var MarkupLayer = React.createClass({
 
   renderNewPoints: function() {
     var marker = MarkupStore.newMarker();
-    return marker ? <Point marker={marker} /> : null
+    return marker ? <Point marker={marker} key="0" /> : null
   },
 
   handleNewMarker: function(event) {
@@ -78,11 +80,7 @@ var MarkupLayer = React.createClass({
 
   renderPoints: function() {
     return _.map(this.state.markers, function (marker) {
-      return (
-        <div key={marker.id}>
-          <Point marker={marker}/>
-        </div>
-      )
+      return <Point key={marker.id} marker={marker}/>
     });
   }
 

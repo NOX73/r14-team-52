@@ -23,14 +23,16 @@ var MarkupLayer = React.createClass({
   render: function() {
     return (
       <div className="markers-layer">
-        {this.renderPoints()}
+        <ReactCSSTransitionGroup transitionName="point-animation">
+          {this.renderPoints()}
+        </ReactCSSTransitionGroup>
       </div>
     )
   },
 
   renderPoints: function() {
     return _.map(this.state.markers, function (marker) {
-      return <Point marker={marker}/>
+      return <Point marker={marker} key={marker.id}/>
     });
   }
 
