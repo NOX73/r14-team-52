@@ -315,3 +315,9 @@
   height: 90%;
   -webkit-user-select: none;
 }
+
+.b_upload-form-image {
+  width: 32px;
+  height: 32px;
+}
+

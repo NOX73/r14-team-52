@@ -34,7 +34,7 @@ var MarkerForm = React.createClass({
         </ButtonToolbar>
 
         <form enctype="multipart/form-data">
-          {marker.image ? <img src={marker.image.url} /> : null}
+          {marker.image && marker.image.url ? <img className="b_upload-form-image" src={marker.image.url} /> : null}
           <Input type="file" onChange={this.chageFile} name="video_marker[image]"/>
         </form>
 
