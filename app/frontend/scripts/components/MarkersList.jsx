@@ -57,10 +57,10 @@ var MarkersList = React.createClass({
   scrollPosition: function() {
     if(this.props.markers.length === 0) return 0;
 
-    var timestamp = this.state.timestamp;
-    var sorterd = _.sortBy(this.props.markers, 'start_at');
+    var timestamp = this.state.timestamp || 0;
+    var sorted = _.sortBy(this.props.markers, 'start_at');
 
-    var idx = _.findLastIndex(sorterd, function(marker){
+    var idx = _.findLastIndex(sorted, function(marker){
       return !MarkerHelper.isInActive(marker, timestamp);
     });
 
@@ -71,10 +71,10 @@ var MarkersList = React.createClass({
 
   renderMarkers: function () {
     var id = this.props.video.id;
-    var timestamp = this.state.timestamp;
-    var sorterd = _.sortBy(this.props.markers, 'start_at');
+    var timestamp = this.state.timestamp || 0;
+    var sorted = _.sortBy(this.props.markers, 'start_at');
 
-    return _.map(sorterd, function(marker) {
+    return _.map(sorted, function(marker) {
       var styleFlags = {
         active: MarkerHelper.isActive(marker, timestamp),
         inactive: MarkerHelper.isInActive(marker, timestamp),
