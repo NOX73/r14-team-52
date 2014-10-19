@@ -3,7 +3,8 @@
     .points-row
       .points-wrap
         .points-motto
-          %p "Point users to the things that really matter"
+          %p
+            %strong "Point users to the things that really matter"
           %p Points allows you to place markers on your video and lets users interact with them.
           - if current_user
             = link_to "Try it now", videos_path, class: "landing-button"
