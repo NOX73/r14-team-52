@@ -12,12 +12,12 @@
         = link_to image_tag( "http://img.youtube.com/vi/#{video.youtube_video_id}/0.jpg", {class: "img-thumbnail"}), edit_video_url(video)
         %br
         .controls{style: 'margin: 5px'}
-          = link_to edit_video_path(video), class: 'btn btn-primary btn-sm' do
-            %span.glyphicon.glyphicon-edit
-            Edit
           = link_to video_path(video), class: 'btn btn-default btn-sm' do
             %span.glyphicon.glyphicon-play-circle
             Show
+          = link_to edit_video_path(video), class: 'btn btn-primary btn-sm' do
+            %span.glyphicon.glyphicon-edit
+            Edit
           = link_to video, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-sm' do
             %span.glyphicon.glyphicon-remove
             Destroy
