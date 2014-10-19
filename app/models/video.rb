@@ -11,12 +11,11 @@ end
 
 class Video < ActiveRecord::Base
   belongs_to :user
+  has_many :markers
 
   validates :name, :source_url, presence: true
   validates :source_url, url: true
   validates :youtube_video_id, youtube_video_id: true
-
-  has_many :markers
 
   def source_url=(value)
     write_attribute(:source_url, value)

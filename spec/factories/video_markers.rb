@@ -2,7 +2,6 @@ FactoryGirl.define do
   factory :video_marker, :class => 'Video::Marker' do
     name
     description
-    type_of_marker 0
     link { Faker::Internet.url('wikipedia.org') }
     start_at { generate(:timestamp) }
     x { generate(:integer) }
@@ -10,11 +9,11 @@ FactoryGirl.define do
     video
 
     factory :link do
-      type_of_marker 0
+      type_of_marker Video::Marker::LINK
     end
 
     factory :info do
-      type_of_marker 1
+      type_of_marker Video::Marker::INFO
     end
   end
 end
