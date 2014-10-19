@@ -6,10 +6,9 @@
 
 var React = require('react/addons');
 
-var Input = require('react-bootstrap/Input');
 var MarkerActions = require('../actions/MarkerActions');
 var MarkerStore = require('../stores/MarkerStore');
-var Button = require('react-bootstrap/Button');
+var {Button, Input, ButtonGroup, ButtonToolbar} = require('react-bootstrap');
 
 function bsStyle(name) {
   return MarkerStore.isErrorField(name) ? "error" : ""
@@ -26,10 +25,14 @@ var MarkerForm = React.createClass({
         <Input type="text" placeholder="Name" defaultValue={marker.name} onChange={this.changeName}/>
         <Input type="text" placeholder="Link" defaultValue={marker.link} onChange={this.changeLink}/>
         <Input type="textarea" placeholder="Description" defaultValue={marker.description} onChange={this.changeDescription}/>
-        <Input type="select" defaultValue={marker.type_of_marker} onChange={this.changeTypeOfMarker}>
-          <option value={1}>Link</option>
-          <option value={2}>Info</option>
-        </Input>
+
+        <ButtonToolbar className="form-group">
+          <ButtonGroup>
+            <Button onClick={this.changeTypeOfMarker.bind(this,1)} active={marker.type_of_marker == 1}>Link</Button>
+            <Button onClick={this.changeTypeOfMarker.bind(this,2)} active={marker.type_of_marker == 2}>Info</Button>
+          </ButtonGroup>
+        </ButtonToolbar>
+
         <Input type="file"/>
         <Button className="pull-right" bsStyle="danger" onClick={this.onDelete}>Delete</Button>
       </form>
@@ -42,8 +45,7 @@ var MarkerForm = React.createClass({
     MarkerActions.updateMarker(this.props.marker, {description: val});
   },
 
-  changeTypeOfMarker: function(e) {
-    var val = e.target.value;
+  changeTypeOfMarker: function(val) {
     MarkerActions.updateMarker(this.props.marker, {type_of_marker: val});
   },
 

@@ -66,8 +66,7 @@ var VideoEdit = React.createClass({
 
         <div className="col-md-3">
           <Button onClick={this.fullScreen}>FullScreen</Button>
-          <br/>
-          <br/>
+          <br/> <br/>
           {this.renderMarkerForm()}
         </div>
       </div>

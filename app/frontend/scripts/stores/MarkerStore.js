@@ -106,6 +106,9 @@ MarkerStore.registerHandler(MarkerConstants.VIDEO_MARKER_UPDATED, function(marke
   markers[id].push(marker);
   updateError = null;
 
+  if(selectedMarker && selectedMarker.id === marker.id) selectedMarker = marker;
+  if(hoverMarker && hoverMarker.id === marker.id) hoverMarker = marker;
+
   this.emitChange();
 });
 
