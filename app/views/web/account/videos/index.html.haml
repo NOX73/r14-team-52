@@ -1,18 +1,28 @@
 .container
   %h1= t('.title')
 
-  %table.table
-    - @videos.each do |video|
-      %tr
-        %td= link_to video, edit_video_url(video)
-        %td
-          .btn-group
-            = link_to 'Edit', edit_video_path(video)
-            |
-            = link_to 'Show', video_path(video)
-            |
-            = link_to 'Destroy', video, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  = link_to t('.new_video'), new_video_path, class: "btn btn-primary"
 
   %br
+  %br
 
-  = link_to t('.new_video'), new_video_path, class: "btn btn-primary"
+  %div
+    - @videos.each do |video|
+      .row
+        .col-xs-3
+      .pull-left
+        .row
+          = link_to image_tag( "http://img.youtube.com/vi/#{video.youtube_video_id}/0.jpg", {width: "40%", class: "img-thumbnail"}), edit_video_url(video)
+        .row
+          %br
+          = link_to 'Edit', edit_video_path(video), :class => "btn btn-success"
+          = link_to 'Show', video_path(video), :class => "btn btn-primary"
+          = link_to 'Destroy', video, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+          %br
+          %br
+          %br
+  %br
+  %br
+  %br
+  %br
+  %br
