@@ -8,6 +8,8 @@ var React = require('react/addons');
 var Fluxable = require('../behaviors/Fluxable');
 var MarkerStore = require('../stores/MarkerStore');
 
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 var Point = require('./Point.jsx');
 
 var MarkupLayer = React.createClass({
