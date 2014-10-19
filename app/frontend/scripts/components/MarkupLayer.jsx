@@ -8,6 +8,8 @@ var React = require('react/addons');
 var MarkerActions = require('../actions/MarkerActions');
 var MarkupActions =require('../actions/MarkupActions');
 
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 var Fluxable = require('../behaviors/Fluxable');
 
 var PlayerStore = require('../stores/PlayerStore');
@@ -30,7 +32,9 @@ var MarkupLayer = React.createClass({
   render: function() {
     return (
       <div ref="layer" className="markup-layer" onClick={this.handleNewMarker} onMouseMove={this.onMouseMove} onMouseLeave={this.onMouseLeave}>
-        {this.renderPoints()}
+        <ReactCSSTransitionGroup transitionEnter={false} transitionName="point-animation">
+          {this.renderPoints()}
+        </ReactCSSTransitionGroup>
         {this.renderNewPoints()}
       </div>
     )
@@ -74,7 +78,11 @@ var MarkupLayer = React.createClass({
 
   renderPoints: function() {
     return _.map(this.state.markers, function (marker) {
-      return <Point marker={marker}/>
+      return (
+        <div key={marker.id}>
+          <Point marker={marker}/>
+        </div>
+      )
     });
   }
 

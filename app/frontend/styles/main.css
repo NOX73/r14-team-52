@@ -77,110 +77,72 @@
   width: 30px;
   height: 30px;
   position: absolute;
-  /*-webkit-animation-name: marker_point;*/
-  /*-webkit-animation-duration: 0.6s;*/
-  /*-webkit-animation-fill-mode: both;*/
-  /*-webkit-animation-delay: 0.6s;*/
 }
 
-.b_marker-point-circle-normal {
+.b_marker-point-circle {
   position: absolute;
   border: 2px solid #6cc5e8;
   border-radius: 50%;
+  opacity: 1;
   width: 6px;
   height: 6px;
-  opacity: 1;
   left: 12px;
   top: 12px;
-  /*-webkit-animation-name: normal_circle;*/
-  /*-webkit-animation-duration: 0.6s;*/
-  /*-webkit-animation-fill-mode: both;*/
+  -webkit-animation-name: circle;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-timing-function: linear;
 }
 .b_marker-point-circle-small {
-  content: '';
-  display: block;
-  position: absolute;
-  border: 2px solid #6cc5e8;
-  border-radius: 50%;
-  width: 0;
-  height: 0;
-  left: 13px;
-  top: 13px;
-  -webkit-animation-name: small_circle;
-  -webkit-animation-duration: 0.6s;
-  -webkit-animation-fill-mode: both;
+  -webkit-animation-delay: 0;
+}
+.b_marker-point-circle-normal {
+  -webkit-animation-delay: 0.4s;
 }
 .b_marker-point-circle-big {
-  content: '';
-  display: block;
-  position: absolute;
-  border: 2px solid #6cc5e8;
-  border-radius: 50%;
-  opacity: 0.75;
-  left: 5px;
-  top: 5px;
-  width: 20px;
-  height: 20px;
-  -webkit-animation-name: big_circle;
-  -webkit-animation-duration: 0.6s;
-  -webkit-animation-fill-mode: both;
+  -webkit-animation-delay: 0.8s;
 }
 
-@-webkit-keyframes big_circle {
-  0%   {
+.point-animation-leave {
+  opacity: 1;
+  -webkit-transition: opacity 1.2s ease-in;
+}
+
+.point-animation-leave.point-animation-leave-active {
+  opacity: 0;
+}
+
+@-webkit-keyframes circle {
+  0% {
+    opacity: 1;
+    width: 6px;
+    height: 6px;
+    left: 12px;
+    top: 12px;
+  }
+  25% {
     opacity: 0.75;
     left: 5px;
     top: 5px;
     width: 20px;
     height: 20px;
   }
-  100% {
+  50% {
     opacity: 0.5;
     left: 0;
     top: 0;
     width: 30px;
     height: 30px;
   }
-}
-
-@-webkit-keyframes normal_circle {
-  0%   {
-    width: 6px;
-    height: 6px;
-    opacity: 1;
-    left: 12px;
-    top: 12px;
+  75% {
+    opacity: 0.25;
+    left: -5px;
+    top: -5px;
+    width: 40px;
+    height: 40px;
   }
   100% {
-    opacity: 0.75;
-    left: 5px;
-    top: 5px;
-    width: 20px;
-    height: 20px;
-  }
-}
-
-@-webkit-keyframes small_circle {
-  0%   {
-    width: 0;
-    height: 0;
-    left: 13px;
-    top: 13px;
-  }
-  100% {
-    width: 6px;
-    height: 6px;
-    left: 12px;
-    top: 12px;
-  }
-}
-
-@-webkit-keyframes marker_point {
-  0%   {
-   opacity: 1
-  }
-  100% {
-    opacity: 0
+    opacity: 0;
   }
 }
 
