@@ -10,6 +10,11 @@ var _ = require('lodash');
 var hoverMarker = null;
 var selectedMarker = null;
 
+function setSelectedMarker(marker) {
+  if(marker && selectedMarker && marker.id === selectedMarker.id) return;
+  selectedMarker = marker;
+}
+
 var MarkerHelper = require('../helpers/MarkerHelper');
 
 var MarkerStore = new Store({
@@ -47,12 +52,14 @@ var MarkerStore = new Store({
 
 });
 
-
 MarkerStore.registerHandler(MarkerConstants.ADD, function(payload) {
   var id = payload.videoId;
   if(!markers[id]) markers[id] = [];
 
   markers[id].push(payload.marker);
+
+  setSelectedMarker(payload.marker)
+
   this.emitChange();
 });
 
@@ -91,7 +98,7 @@ MarkerStore.registerHandler(MarkerConstants.MARKER_HOVER, function(marker) {
   if(marker && hoverMarker && marker.id === hoverMarker.id) return;
   hoverMarker = marker;
 
-  if(selectedMarker && selectedMarker.id != marker) selectedMarker = null;
+  //if(selectedMarker && selectedMarker.id != marker) selectedMarker = null;
 
   this.emitChange();
 });
@@ -107,9 +114,7 @@ MarkerStore.registerHandler(MarkerConstants.MARKER_DELETED, function(marker) {
 });
 
 MarkerStore.registerHandler(MarkerConstants.MARKER_SELECT, function(marker) {
-  if(marker && selectedMarker && marker.id === selectedMarker.id) return;
-  selectedMarker = marker;
-
+  setSelectedMarker(marker)
   this.emitChange();
 });
 

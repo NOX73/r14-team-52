@@ -55,18 +55,6 @@ var MarkersList = React.createClass({
           onClick={this.onClickMarker.bind(this, marker)}
       />
 
-      // Info marker
-      //if(marker.type_of_marker == 2) {
-        //var popover = <Popover title={marker.name}>
-          //{marker.description ? <p>{marker.description}</p> : null}
-          //<a src={marker.url}>Link</a>
-        //</Popover>
-        //markerElement = (
-          //<OverlayTrigger trigger="manual" defaultOverlayShown placement="left" overlay={popover}>
-            //{markerElement}
-          //</OverlayTrigger>);
-      //}
-
       if(marker.name) {
         var tooltip = <Tooltip><strong>{marker.name}</strong></Tooltip>; 
 
@@ -87,16 +75,8 @@ var MarkersList = React.createClass({
   },
 
   onClickMarker: function(marker) {
-    switch(marker.type_of_marker) {
-      case 1:
-        MarkerActions.selectMarker(marker);
-        window.open(marker.link,'_blank'); break;
-      case 2:
-        MarkerActions.selectMarker(marker);
-        break;
-      default:
-        console.warn("Undefined marker type: ", marker);
-    }
+    if(this.props.onClickMarker)
+      this.props.onClickMarker(marker);
   }
 
 });

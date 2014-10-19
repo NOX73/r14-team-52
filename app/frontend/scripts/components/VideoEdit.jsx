@@ -18,6 +18,7 @@ var MarkerInfo = require('./MarkerInfo');
 var VideoStore = require('../stores/VideoStore');
 var MarkerStore = require('../stores/MarkerStore');
 var VideoActions = require('../actions/VideoActions');
+var MarkerActions = require('../actions/MarkerActions');
 
 var screenfull = require('screenfull');
 
@@ -59,7 +60,7 @@ var VideoEdit = React.createClass({
             <MarkerInfo />
           </div>
 
-          <MarkersList video={video} markers={markers}/>
+          <MarkersList video={video} markers={markers} onClickMarker={this.onClickMarker}/>
         </div>
 
         <div className="col-md-3">
@@ -74,7 +75,7 @@ var VideoEdit = React.createClass({
   },
 
   renderMarkerForm: function() {
-    var marker = MarkerStore.hoverMarker();
+    var marker = MarkerStore.selectedMarker();
     if(!marker) return null;
 
     return (<MarkerForm key={marker.id} marker={marker}/>);
@@ -84,6 +85,10 @@ var VideoEdit = React.createClass({
     if(screenfull.enabled) {
       screenfull.request(this.refs.main.getDOMNode());
     }
+  },
+
+  onClickMarker: function(marker) {
+    MarkerActions.selectMarker(marker);
   }
 
 });

@@ -44,6 +44,21 @@ function hideSelected() {
   AppDispatcher.handleAction(MarkerConstants.MARKER_UNSELECT);
 }
 
+function markerClick(marker) {
+  switch(marker.type_of_marker) {
+    case 1:
+      selectMarker(marker);
+      window.open(marker.link,'_blank');
+      break;
+    case 2:
+      selectMarker(marker);
+      break;
+    default:
+      console.warn("Undefined marker type: ", marker);
+  }
+
+}
+
 module.exports = {
   add: add,
   loadForVideo: loadForVideo,
@@ -51,5 +66,6 @@ module.exports = {
   markerHover: markerHover,
   deleteMarker: deleteMarker,
   selectMarker: selectMarker,
-  hideSelected: hideSelected
+  hideSelected: hideSelected,
+  markerClick: markerClick
 };

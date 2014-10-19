@@ -9,6 +9,7 @@ var MarkersList = require('./MarkersList');
 var Player = require('./Player');
 var MarkersLayer = require('./MarkersLayer');
 var MarkerInfo = require('./MarkerInfo');
+var MarkerActions = require('../actions/MarkerActions');
 
 var VideoItem = React.createClass({
 
@@ -22,10 +23,16 @@ var VideoItem = React.createClass({
           <MarkerInfo />
           <Player video={video}/>
         </div>
-        <MarkersList video={video} markers={markers}/>
+        <MarkersList video={video} markers={markers} onClickMarker={this.onClickMarker}/>
       </div>
     );
+  },
+
+  onClickMarker: function(marker) {
+    MarkerActions.markerClick(marker);
   }
+
+
 
 });
 
