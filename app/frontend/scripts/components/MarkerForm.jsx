@@ -31,7 +31,7 @@ var MarkerForm = React.createClass({
           <option value={2}>Info</option>
         </Input>
         <Input type="file"/>
-        <Button bsStyle="danger" onClick={this.onDelete}>Delete</Button>
+        <Button className="pull-right" bsStyle="danger" onClick={this.onDelete}>Delete</Button>
       </form>
     )
 
