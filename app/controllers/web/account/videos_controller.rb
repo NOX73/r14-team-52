@@ -1,4 +1,5 @@
 class Web::Account::VideosController < Web::Account::ApplicationController
+  skip_before_filter :require_login, only: [:show] 
 
   # GET /videos
   def index
