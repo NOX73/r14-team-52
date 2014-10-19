@@ -18,7 +18,7 @@
 
 jQuery(function() {
   var element = document.getElementById('PointsAppContainer');
-  (window !== window.top ? window.top : window).PointsApp.render(element);
+  if(element) (window !== window.top ? window.top : window).PointsApp.render(element);
 });
 
 
