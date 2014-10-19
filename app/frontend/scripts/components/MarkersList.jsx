@@ -39,15 +39,15 @@ var MarkersList = React.createClass({
   },
 
   onMouseEnter: function () {
-    this.autoScroll = false;
+    this.disableAutoScroll = false;
   },
 
   onMouseLeave: function() {
-    this.autoScroll = true;
+    this.disableAutoScroll = true;
   },
 
   scroll: function() {
-    if(this.refs.scroll && this.autoScroll) {
+    if(this.refs.scroll && !this.disableAutoScroll) {
       $(this.refs.scroll.getDOMNode()).animate({scrollTop: this.scrollPosition()}, {queue: false});
     }
   },
