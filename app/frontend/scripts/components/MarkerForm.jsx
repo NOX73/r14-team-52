@@ -22,7 +22,6 @@ var MarkerForm = React.createClass({
         <Input type="text" placeholder="Link" defaultValue={marker.link} onChange={this.changeLink}/>
         <Input type="textarea" placeholder="Description" defaultValue={marker.description} onChange={this.changeDescription}/>
         <Input type="select" defaultValue={marker.type_of_marker} onChange={this.changeTypeOfMarker}>
-          <option value={0}></option>
           <option value={1}>Link</option>
           <option value={2}>Info</option>
         </Input>
