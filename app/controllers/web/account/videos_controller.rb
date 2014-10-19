@@ -26,7 +26,7 @@ class Web::Account::VideosController < Web::Account::ApplicationController
     @video.user = current_user
 
     if @video.save
-      redirect_to video_url(@video), notice: 'Video was successfully created.'
+      redirect_to edit_video_url(@video), notice: 'Video was successfully created.'
     else
       render :new
     end
