@@ -21,7 +21,7 @@ var MarkerForm = React.createClass({
     var marker = this.props.marker;
 
     return (
-      <form className="form-horizontal">
+      <div className="form-horizontal">
         <Input type="number" hasFeedback bsStyle={bsStyle("start_at")} defaultValue={marker.start_at} onChange={this.changeStartAt}/>
         <Input type="text" placeholder="Name" defaultValue={marker.name} onChange={this.changeName}/>
         <Input type="text" placeholder="Link" defaultValue={marker.link} onChange={this.changeLink}/>
@@ -30,11 +30,21 @@ var MarkerForm = React.createClass({
           <option value={1}>Link</option>
           <option value={2}>Info</option>
         </Input>
-        <Input type="file"/>
+
         <Button bsStyle="danger" onClick={this.onDelete}>Delete</Button>
-      </form>
+
+        <form enctype="multipart/form-data">
+          <Input type="file" onChange={this.chageFile} name="video_marker[image]"/>
+        </form>
+
+      </div>
     )
 
+  },
+
+  chageFile: function (e) {
+    var formData = new FormData(e.target.form);
+    MarkerActions.uploadFile(this.props.marker, formData);
   },
 
   changeDescription: function(e){

@@ -67,6 +67,10 @@ function hideInfo() {
   AppDispatcher.handleAction(MarkerConstants.HIDE_INFO);
 }
 
+function uploadFile(marker, formData) {
+  MarkerRepository.uploadFile(marker, formData)
+}
+
 module.exports = {
   add: add,
   loadForVideo: loadForVideo,
@@ -76,5 +80,7 @@ module.exports = {
   selectMarker: selectMarker,
   unselectMarker: unselectMarker,
   markerClick: markerClick,
-  hideInfo: hideInfo
+  hideInfo: hideInfo,
+  uploadFile: uploadFile
+
 };
