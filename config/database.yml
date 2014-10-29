@@ -11,3 +11,8 @@ development: &default
 test:
   <<: *default
   database: points_test
+
+production:
+  <<: *default
+  database: points_production
+  user: points_production
