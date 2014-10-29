@@ -10,7 +10,7 @@
 /public/system
 /tags
 /tmp/*
-/node_modules
+node_modules/
 /app/assets/javascripts/*.svg
 /app/assets/javascripts/*.woff
 /app/assets/javascripts/*.eot
