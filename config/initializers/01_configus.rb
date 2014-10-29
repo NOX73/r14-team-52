@@ -6,10 +6,10 @@ Configus.build Rails.env do # set current environment
     ga_treker                   "UA-55882831-1"
     github_key                  "faba0c6dd9f9577808cd"
     github_secret               "326245699a7c23282af484122ff971f0af8f61e5"
-    S3_bucket_name              "point7"
-    S3_key                      "AKIAJZF2OA67SOKDH2KQ"
-    S3_region                   "us-west-2"
-    S3_secret                   "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"
+    s3_bucket_name              "point7"
+    s3_key                      "AKIAJZF2OA67SOKDH2KQ"
+    s3_region                   "us-west-2"
+    s3_secret                   "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"
     secret_key_base             "972bb750e472877df249e30fc706bba4a7b130414ef3f88c12c7431b2a9f21ba435cf210ef972ab08c2c80235ef3bfa2e488f0345718c6c801911c247b6ac477"
   end
 
