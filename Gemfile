@@ -23,6 +23,7 @@ gem "twitter-bootstrap-rails"
 gem "sorcery"
 gem "rails-sass-images"
 gem "validates"
+gem "configus"
 
 gem "carrierwave"
 gem "mini_magick", "~> 4.0.0.rc"

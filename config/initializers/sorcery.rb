@@ -109,14 +109,14 @@ Rails.application.config.sorcery.configure do |config|
   # config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
   # config.twitter.user_info_mapping = {:email => "screen_name"}
 
-  config.facebook.key = ENV['FACEBOOK_KEY']
-  config.facebook.secret = ENV['FACEBOOK_SECRET']
+  config.facebook.key = configus.facebook_key
+  config.facebook.secret = configus.facebook_secret
   config.facebook.callback_url = "http://points.r14.railsrumble.com/oauth/callback?provider=facebook"
   config.facebook.user_info_mapping = {:email => "email", :password => "email"}
   config.facebook.access_permissions = ["email"]
 
-  config.github.key = ENV['GITHUB_KEY']
-  config.github.secret = ENV['GITHUB_SECRET']
+  config.github.key = configus.github_key
+  config.github.secret = configus.github_secret
   config.github.callback_url = "http://points.r14.railsrumble.com/oauth/callback?provider=github"
   config.github.user_info_mapping = {:email => "email", :password => "email"}
 

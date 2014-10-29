@@ -1,5 +1,5 @@
 module ApplicationHelper
   def ga_treker
-    ENV.fetch("GA_TREKER")
+    configus.ga_treker
   end
 end

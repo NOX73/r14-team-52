@@ -3,14 +3,14 @@ CarrierWave.configure do |config|
   if Rails.env.production?
     config.fog_credentials = {
       :provider              => 'AWS',
-      :aws_access_key_id     => ENV['S3_KEY'],
-      :aws_secret_access_key => ENV['S3_SECRET'],
-      :region                => ENV['S3_REGION']
+      :aws_access_key_id     => configus.s3_key,
+      :aws_secret_access_key => configus.s3_secret,
+      :region                => configus.s3_region
     }
 
     config.storage = :fog
 
-    config.fog_directory    = ENV['S3_BUCKET_NAME']
+    config.fog_directory    = configus.s3_bucket_name
     # config.s3_access_policy = :public_read                          # Generate http:// urls. Defaults to :authenticated_read (https://)
     # config.fog_host         = "#{ENV['S3_ASSET_URL']}/#{ENV['S3_BUCKET_NAME']}"
   else
