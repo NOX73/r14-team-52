@@ -43,6 +43,10 @@ group :development, :test do
   gem "factory_girl_sequences"
   gem "rspec-rails"
   gem "quiet_assets"
+  gem 'capistrano', '~> 3.2.0'
+  gem 'capistrano-bundler', '~> 1.1'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails', '~> 1.1'
 end
 
 group :test do
